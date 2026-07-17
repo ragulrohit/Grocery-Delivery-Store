@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers & Deals - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading offers...</p></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/stackly-logo.webp" alt="Stackly"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="offers.html" class="active">Offers</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-bg page-bg-offers" style="padding-top:90px;min-height:100vh;">
+        <div class="section">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">More value in every basket</span>
+                <h1>&#127873; Offers & Deals</h1>
+                <p>Discover rotating weekly offers, bundle savings and member-only prices across the groceries your household loves most.</p>
+                <div class="page-hero-points"><span>Weekly deals</span><span>Member rewards</span><span>Bundle savings</span></div>
+                <img src="images/hero-offers-v2.png" alt="A vibrant grocery basket prepared for seasonal offers">
+            </div>
+
+            <div class="offers-grid animate-fadeInUp delay-1">
+                <div class="offer-card" onclick="showToast('Offer applied! 50% discount activated')">
+                    <img src="images/offer-1.webp" alt="50% Off">
+                    <div class="offer-overlay">
+                        <h3>50% OFF</h3>
+                        <p>On all fresh fruits this weekend. Use code: FRESH50</p>
+                        <button class="btn btn-primary" style="margin-top:0.5rem;">Grab Deal &#128293;</button>
+                    </div>
+                </div>
+                <div class="offer-card" onclick="showToast('Free delivery activated!')">
+                    <img src="images/offer-2.webp" alt="Free Delivery">
+                    <div class="offer-overlay">
+                        <h3>Free Delivery</h3>
+                        <p>On orders above $50. No minimum for premium members!</p>
+                        <button class="btn btn-secondary" style="margin-top:0.5rem;">Order Now &#128666;</button>
+                    </div>
+                </div>
+                <div class="offer-card" onclick="showToast('BOGO deal added to your cart!')">
+                    <img src="images/offer-3.webp" alt="Buy 1 Get 1">
+                    <div class="offer-overlay">
+                        <h3>Buy 1 Get 1 Free</h3>
+                        <p>On all bakery items. Limited time offer!</p>
+                        <button class="btn btn-accent" style="margin-top:0.5rem;">Claim Now &#127856;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:3rem;">
+                <div class="section-header animate-fadeInUp delay-2">
+                    <h2>Daily Specials</h2>
+                    <p>Today's exclusive deals you don't want to miss</p>
+                </div>
+                <div class="products-grid animate-fadeInUp delay-3">
+                    <div class="product-card">
+                        <span class="product-badge" style="background:var(--accent1);">50% OFF</span>
+                        <img src="images/fruits.webp" alt="Fruits" class="product-image">
+                        <div class="product-info">
+                            <h3>Organic Fruit Basket</h3>
+                            <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (128)</div>
+                            <div class="price">$14.99 <old>$29.99</old></div>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Organic Fruit Basket (50% Off)',14.99,'images/fruits.webp')">Add to Cart &#128722;</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-badge" style="background:var(--accent4);">30% OFF</span>
+                        <img src="images/dairy.webp" alt="Dairy" class="product-image">
+                        <div class="product-info">
+                            <h3>Premium Dairy Pack</h3>
+                            <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (256)</div>
+                            <div class="price">$11.19 <old>$15.99</old></div>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Premium Dairy Pack (30% Off)',11.19,'images/dairy.webp')">Add to Cart &#128722;</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-badge" style="background:var(--accent2);">BUY 1 GET 1</span>
+                        <img src="images/bakery.webp" alt="Bakery" class="product-image">
+                        <div class="product-info">
+                            <h3>Fresh Bakery Combo</h3>
+                            <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (167)</div>
+                            <div class="price">$12.99 <old>$25.98</old></div>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Fresh Bakery Combo (BOGO)',12.99,'images/bakery.webp')">Add to Cart &#128722;</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-badge" style="background:var(--accent5);">40% OFF</span>
+                        <img src="images/beverages.webp" alt="Beverages" class="product-image">
+                        <div class="product-info">
+                            <h3>Tropical Juice Pack</h3>
+                            <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (198)</div>
+                            <div class="price">$5.99 <old>$9.99</old></div>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Tropical Juice Pack (40% Off)',5.99,'images/beverages.webp')">Add to Cart &#128722;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header animate-fadeInUp delay-4" style="margin-top:3rem;">
+                <h2>Coupon Codes</h2>
+                <p>Apply these coupons at checkout for extra savings</p>
+            </div>
+            <div class="content-grid animate-fadeInUp delay-5">
+                <div class="content-card" style="padding:2rem;text-align:center;border:2px dashed var(--primary);">
+                    <h3 style="color:var(--primary);font-size:1.5rem;">WELCOME20</h3>
+                    <p style="font-size:1.1rem;font-weight:600;">20% OFF</p>
+                    <p>On your first order. Min order $25.</p>
+                    <button class="btn btn-outline" onclick="navigator.clipboard.writeText('WELCOME20');showToast('Coupon copied!')">Copy Code</button>
+                </div>
+                <div class="content-card" style="padding:2rem;text-align:center;border:2px dashed var(--secondary);">
+                    <h3 style="color:var(--secondary);font-size:1.5rem;">FRESH30</h3>
+                    <p style="font-size:1.1rem;font-weight:600;">30% OFF</p>
+                    <p>On all fresh produce. Valid this week!</p>
+                    <button class="btn btn-outline" onclick="navigator.clipboard.writeText('FRESH30');showToast('Coupon copied!')">Copy Code</button>
+                </div>
+                <div class="content-card" style="padding:2rem;text-align:center;border:2px dashed var(--accent2);">
+                    <h3 style="color:var(--accent2);font-size:1.5rem;">FREESHIP</h3>
+                    <p style="font-size:1.1rem;font-weight:600;">FREE SHIPPING</p>
+                    <p>Free delivery on any order. No minimum!</p>
+                    <button class="btn btn-outline" onclick="navigator.clipboard.writeText('FREESHIP');showToast('Coupon copied!')">Copy Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="editorial-panel animate-on-scroll">
+            <img src="images/product-snack-box.png" alt="A value-packed gourmet snack box" loading="lazy">
+            <div class="editorial-copy"><p class="eyebrow">Smart shopping</p><h2>More goodness in every basket.</h2><p>Our deals rotate across fresh food and household favorites, so saving never means settling.</p><ul class="benefit-list"><li>Weekly offers across the categories you use most</li><li>Simple coupon codes with clear conditions</li><li>Member exclusives and seasonal bundles</li></ul><a href="products.html" class="btn btn-primary">Shop all products &#8594;</a></div>
+        </div>
+    </div>
+
+    <footer class="footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

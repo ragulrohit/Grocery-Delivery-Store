@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading orders...</p></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/stackly-logo.webp" alt="Stackly"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html" class="active">Orders</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-bg page-bg-orders" style="padding-top:90px;min-height:100vh;">
+        <div class="section">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">Packed with precision</span>
+                <h1>&#128230; Order Management</h1>
+                <p>Follow every basket from confirmation to dispatch with clear statuses, careful substitutions and dependable fulfillment updates.</p>
+                <div class="page-hero-points"><span>Live statuses</span><span>Smart substitutions</span><span>Fast dispatch</span></div>
+                <img src="images/hero-orders-v2.png" alt="Grocery orders being checked at a fulfillment station">
+            </div>
+
+            <div class="stats-grid animate-fadeInUp delay-1">
+                <div class="stat-card"><div class="stat-icon">&#128230;</div><div class="stat-info"><h3 class="counter" data-target="2847">0</h3><p>Total Orders</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#9989;</div><div class="stat-info"><h3 class="counter" data-target="2134">0</h3><p>Delivered</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#128260;</div><div class="stat-info"><h3 class="counter" data-target="423">0</h3><p>In Progress</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#10060;</div><div class="stat-info"><h3 class="counter" data-target="290">0</h3><p>Cancelled</p></div></div>
+            </div>
+
+            <div class="charts-grid animate-fadeInUp delay-2">
+                <div class="chart-card">
+                    <h3>&#128202; Orders by Status</h3>
+                    <div class="chart-container">
+                        <canvas id="orderStatusPie" width="400" height="300" class="pie-chart"></canvas>
+                        <div class="chart-legend"></div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>&#128197; Daily Orders (This Week)</h3>
+                    <div class="chart-container">
+                        <canvas id="dailyOrdersBar" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card animate-fadeInUp delay-3">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+                    <h3>&#128203; All Orders</h3>
+                    <div class="tabs" data-group="order-tabs" style="margin:0;">
+                        <button class="tab-btn active" data-target="orders-all" data-group="order-tabs">All</button>
+                        <button class="tab-btn" data-target="orders-active" data-group="order-tabs">Active</button>
+                        <button class="tab-btn" data-target="orders-delivered" data-group="order-tabs">Delivered</button>
+                        <button class="tab-btn" data-target="orders-cancelled" data-group="order-tabs">Cancelled</button>
+                    </div>
+                </div>
+                <div id="orders-all" class="tab-content active" data-group="order-tabs">
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+                            <tbody>
+                                <tr><td>#ORD-2841</td><td>Sarah Johnson</td><td>5 items</td><td>$67.50</td><td><span class="status-badge status-delivered">Delivered</span></td><td>Jul 16, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                                <tr><td>#ORD-2840</td><td>Mike Peterson</td><td>3 items</td><td>$42.00</td><td><span class="status-badge status-active">Active</span></td><td>Jul 16, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                                <tr><td>#ORD-2839</td><td>Emily Davis</td><td>8 items</td><td>$95.30</td><td><span class="status-badge status-pending">Pending</span></td><td>Jul 15, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                                <tr><td>#ORD-2838</td><td>James Wilson</td><td>2 items</td><td>$28.99</td><td><span class="status-badge status-delivered">Delivered</span></td><td>Jul 15, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                                <tr><td>#ORD-2837</td><td>Lisa Anderson</td><td>6 items</td><td>$73.20</td><td><span class="status-badge status-cancelled">Cancelled</span></td><td>Jul 14, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                                <tr><td>#ORD-2836</td><td>Robert Brown</td><td>4 items</td><td>$51.80</td><td><span class="status-badge status-delivered">Delivered</span></td><td>Jul 14, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                                <tr><td>#ORD-2835</td><td>Jennifer Martinez</td><td>7 items</td><td>$88.45</td><td><span class="status-badge status-active">Active</span></td><td>Jul 13, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                                <tr><td>#ORD-2834</td><td>David Lee</td><td>1 item</td><td>$15.99</td><td><span class="status-badge status-pending">Pending</span></td><td>Jul 13, 2026</td><td><button class="btn btn-primary" style="padding:6px 12px;font-size:0.75rem;" onclick="showToast('Viewing order details')">View</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="orders-active" class="tab-content" data-group="order-tabs">
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+                            <tbody>
+                                <tr><td>#ORD-2840</td><td>Mike Peterson</td><td>3 items</td><td>$42.00</td><td><span class="status-badge status-active">Active</span></td><td>Jul 16, 2026</td></tr>
+                                <tr><td>#ORD-2835</td><td>Jennifer Martinez</td><td>7 items</td><td>$88.45</td><td><span class="status-badge status-active">Active</span></td><td>Jul 13, 2026</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="orders-delivered" class="tab-content" data-group="order-tabs">
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+                            <tbody>
+                                <tr><td>#ORD-2841</td><td>Sarah Johnson</td><td>5 items</td><td>$67.50</td><td><span class="status-badge status-delivered">Delivered</span></td><td>Jul 16, 2026</td></tr>
+                                <tr><td>#ORD-2838</td><td>James Wilson</td><td>2 items</td><td>$28.99</td><td><span class="status-badge status-delivered">Delivered</span></td><td>Jul 15, 2026</td></tr>
+                                <tr><td>#ORD-2836</td><td>Robert Brown</td><td>4 items</td><td>$51.80</td><td><span class="status-badge status-delivered">Delivered</span></td><td>Jul 14, 2026</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="orders-cancelled" class="tab-content" data-group="order-tabs">
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+                            <tbody>
+                                <tr><td>#ORD-2837</td><td>Lisa Anderson</td><td>6 items</td><td>$73.20</td><td><span class="status-badge status-cancelled">Cancelled</span></td><td>Jul 14, 2026</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="editorial-panel animate-on-scroll">
+            <img src="images/product-vegetable-box.png" alt="Fresh vegetables packed into an order box" loading="lazy">
+            <div class="editorial-copy"><p class="eyebrow">Order confidence</p><h2>Every basket, checked from shelf to doorstep.</h2><p>A clear order workflow helps the team protect quality while keeping customers informed.</p><ul class="benefit-list"><li>Verify substitutions before dispatch</li><li>Track pending, active and completed orders</li><li>Coordinate packing details with delivery teams</li></ul><a href="delivery.html" class="btn btn-secondary">Open delivery tracking &#8594;</a></div>
+        </div>
+    </div>
+
+    <footer class="footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                drawPieChart('orderStatusPie', [1420, 680, 450, 297], ['#06d6a0','#ff9f1c','#118ab2','#e71d36'], ['Delivered','In Progress','Pending','Cancelled']);
+                drawBarChart('dailyOrdersBar', [180, 220, 195, 250, 310, 280, 340], ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], ['#118ab2','#2ec4b6','#06d6a0','#ff9f1c','#ff6b35','#e71d36','#7b2ff7']);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

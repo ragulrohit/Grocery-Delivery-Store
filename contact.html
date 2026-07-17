@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading contact page...</p></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/stackly-logo.webp" alt="Stackly"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html" class="active">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-bg page-bg-contact" style="padding-top:90px;min-height:100vh;">
+        <div class="section">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">Helpful humans, ready to listen</span>
+                <h1>&#128100; Add Contact</h1>
+                <p>Save trusted delivery contacts and reach our support team whenever you need help with an order, address or account.</p>
+                <div class="page-hero-points"><span>24/7 support</span><span>Fast responses</span><span>Saved addresses</span></div>
+                <img src="images/hero-contact-v2.png" alt="A friendly grocery customer-care specialist helping a shopper">
+            </div>
+
+            <div class="stats-grid animate-fadeInUp delay-1">
+                <div class="stat-card"><div class="stat-icon">&#128222;</div><div class="stat-info"><h3>+1 234 567 890</h3><p>Call Us Anytime</p><div class="stat-change">24/7 Customer Support</div></div></div>
+                <div class="stat-card"><div class="stat-icon">&#128231;</div><div class="stat-info"><h3>info@grocery.com</h3><p>Email Us</p><div class="stat-change">Response within 1 hour</div></div></div>
+                <div class="stat-card"><div class="stat-icon">&#128205;</div><div class="stat-info"><h3>123 Grocery St</h3><p>Visit Our Store</p><div class="stat-change">Open 7AM - 11PM Daily</div></div></div>
+                <div class="stat-card"><div class="stat-icon">&#128172;</div><div class="stat-info"><h3>Live Chat</h3><p>Chat with Us</p><div class="stat-change">Avg. wait: 30 seconds</div></div></div>
+            </div>
+
+            <div class="charts-grid animate-fadeInUp delay-2" style="margin-bottom:2rem;">
+                <div class="chart-card" style="padding:0;overflow:hidden;">
+                    <img src="images/delivery-map.webp" alt="Our Location" style="width:100%;height:300px;object-fit:cover;">
+                    <div style="padding:1.5rem;">
+                        <h3>&#128205; Our Main Store Location</h3>
+                        <p style="color:var(--gray);margin-top:0.5rem;">123 Grocery Street, Food City, FC 12345. We are located in the heart of downtown with easy parking access and public transit nearby.</p>
+                    </div>
+                </div>
+                <div class="chart-card" style="padding:0;overflow:hidden;">
+                    <img src="images/delivery-truck.webp" alt="Delivery Fleet" style="width:100%;height:300px;object-fit:cover;">
+                    <div style="padding:1.5rem;">
+                        <h3>&#128666; Delivery Coverage Area</h3>
+                        <p style="color:var(--gray);margin-top:0.5rem;">We deliver across 50+ neighborhoods in the greater metropolitan area. Our fleet of 50+ vehicles ensures fast and reliable delivery to your doorstep.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid animate-fadeInUp delay-3">
+                <div class="chart-card">
+                    <h3>&#128221; Add New Contact</h3>
+                    <p style="color:var(--gray);margin-bottom:1.5rem;">Fill in the details below to add a new contact to your delivery address book. This will make checkout faster and easier.</p>
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="contact-name" placeholder="Enter full name (e.g., John Smith)">
+                    </div>
+                    <div class="settings-row">
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" id="contact-email" placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="contact-phone" placeholder="+1 (555) 000-0000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Address Line 1 *</label>
+                        <input type="text" id="contact-address1" placeholder="Street address">
+                    </div>
+                    <div class="form-group">
+                        <label>Address Line 2</label>
+                        <input type="text" id="contact-address2" placeholder="Apartment, suite, unit, etc. (optional)">
+                    </div>
+                    <div class="settings-row">
+                        <div class="form-group">
+                            <label>City *</label>
+                            <input type="text" id="contact-city" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label>State / Province</label>
+                            <input type="text" id="contact-state" placeholder="State">
+                        </div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="form-group">
+                            <label>ZIP / Postal Code *</label>
+                            <input type="text" id="contact-zip" placeholder="12345">
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select id="contact-country" style="width:100%;padding:12px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;">
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>United Kingdom</option>
+                                <option>Australia</option>
+                                <option>India</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Type</label>
+                        <select id="contact-type" style="width:100%;padding:12px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;">
+                            <option>Home</option>
+                            <option>Work / Office</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Instructions</label>
+                        <textarea id="contact-instructions" style="width:100%;padding:12px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;min-height:80px;resize:vertical;" placeholder="e.g., Ring doorbell, leave at front door, gate code #1234..."></textarea>
+                    </div>
+                    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+                        <button class="btn btn-primary" onclick="handleAddContact()" style="flex:1;min-width:200px;">Save Contact &#128190;</button>
+                        <button class="btn btn-outline" onclick="clearContactForm()" style="flex:1;min-width:200px;">Clear Form &#128260;</button>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>&#128101; Saved Contacts</h3>
+                    <p style="color:var(--gray);margin-bottom:1.5rem;">Your saved delivery contacts for quick and easy checkout.</p>
+                    <div id="contacts-list">
+                        <div class="contact-item" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:var(--radius-sm);margin-bottom:0.75rem;border-left:4px solid var(--primary);">
+                            <img src="images/avatar-1.webp" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
+                            <div style="flex:1;">
+                                <h4 style="font-size:0.95rem;">Home Address</h4>
+                                <p style="color:var(--gray);font-size:0.8rem;">123 Main St, Apt 4B, Food City, FC 12345</p>
+                                <p style="color:var(--gray);font-size:0.8rem;">+1 (555) 123-4567</p>
+                            </div>
+                            <button class="btn btn-outline" style="padding:6px 14px;font-size:0.75rem;" onclick="showToast('Contact edited')">Edit</button>
+                        </div>
+                        <div class="contact-item" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:var(--radius-sm);margin-bottom:0.75rem;border-left:4px solid var(--secondary);">
+                            <img src="images/avatar-2.webp" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
+                            <div style="flex:1;">
+                                <h4 style="font-size:0.95rem;">Office Address</h4>
+                                <p style="color:var(--gray);font-size:0.8rem;">456 Business Ave, Suite 200, Food City, FC 12346</p>
+                                <p style="color:var(--gray);font-size:0.8rem;">+1 (555) 987-6543</p>
+                            </div>
+                            <button class="btn btn-outline" style="padding:6px 14px;font-size:0.75rem;" onclick="showToast('Contact edited')">Edit</button>
+                        </div>
+                    </div>
+                    <div id="contacts-empty" style="display:none;text-align:center;padding:2rem;color:var(--gray);">
+                        <p style="font-size:2rem;">&#128221;</p>
+                        <p>No additional contacts saved yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid animate-fadeInUp delay-4" style="margin-top:2rem;">
+                <div class="content-card">
+                    <img src="images/delivery-package.webp" alt="Packaging">
+                    <div class="content-body">
+                        <h3>Eco-Friendly Packaging</h3>
+                        <p>All our deliveries come in sustainable, biodegradable packaging. We care about the environment while delivering freshness to your doorstep.</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/hero-main.webp" alt="Fresh Products">
+                    <div class="content-body">
+                        <h3>Guaranteed Freshness</h3>
+                        <p>Every product is quality-checked before dispatch. If you are not satisfied with the freshness, we offer a full refund within 24 hours of delivery.</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/dash-analytics.webp" alt="Analytics">
+                    <div class="content-body">
+                        <h3>Smart Delivery Tracking</h3>
+                        <p>Track your order in real-time with our advanced GPS-enabled delivery system. Get live updates and accurate ETA for every order you place.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header animate-fadeInUp delay-5" style="margin-top:3rem;">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers about our contact and delivery services</p>
+            </div>
+
+            <div class="features-grid animate-fadeInUp delay-5">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128222;</div>
+                    <h3>How do I reach support?</h3>
+                    <p>Call us at +1 234 567 890 or use the live chat feature on our website. Our support team is available 24/7 to assist you with orders, returns, and general inquiries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128231;</div>
+                    <h3>Can I email instead?</h3>
+                    <p>Absolutely! Send your queries to info@grocery.com and our team will respond within 1 hour during business hours. For urgent matters, please call us directly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128205;</div>
+                    <h3>Store visit hours?</h3>
+                    <p>Our main store at 123 Grocery Street is open Monday through Sunday from 7AM to 11PM. Walk-ins are welcome for pickup orders, consultations, and product browsing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#129309;</div>
+                    <h3>Business partnerships?</h3>
+                    <p>Interested in partnering with us? Email partnerships@grocery.com with your proposal. We work with local farms, restaurants, and corporate offices for bulk orders and exclusive deals.</p>
+                </div>
+            </div>
+
+            <div class="section-header animate-fadeInUp delay-6" style="margin-top:3rem;">
+                <h2>What Our Customers Say</h2>
+                <p>Trusted by thousands of happy shoppers</p>
+            </div>
+
+            <div class="features-grid animate-fadeInUp delay-6">
+                <div class="testimonial-card">
+                    <img src="images/avatar-4.webp" alt="James">
+                    <p>"The contact form was so easy to use! I added my office address in seconds and now checkout is a breeze. Amazing service!"</p>
+                    <h4>James Wilson</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/avatar-5.webp" alt="Lisa">
+                    <p>"Customer support is fantastic. I called about a delivery issue and they resolved it in under 5 minutes. Highly recommend this service!"</p>
+                    <h4>Lisa Anderson</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/avatar-6.webp" alt="Robert">
+                    <p>"Love that I can save multiple addresses. I switch between home and office deliveries effortlessly. The whole experience is top-notch!"</p>
+                    <h4>Robert Brown</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="editorial-panel animate-on-scroll">
+            <img src="images/fresh-grocery-lifestyle.png" alt="Groceries ready for a smooth home delivery" loading="lazy">
+            <div class="editorial-copy"><p class="eyebrow">Delivery made personal</p><h2>Save the details that make every handoff easy.</h2><p>Add household contacts, accurate addresses and helpful instructions for a smoother arrival.</p><ul class="benefit-list"><li>Separate home, work and family addresses</li><li>Add gate codes and drop-off preferences</li><li>Update contact details whenever plans change</li></ul><a href="delivery.html" class="btn btn-secondary">Learn about delivery &#8594;</a></div>
+        </div>
+    </div>
+
+    <footer class="footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        function getContacts() {
+            return JSON.parse(localStorage.getItem('groceryContacts') || '[]');
+        }
+
+        function saveContacts(contacts) {
+            localStorage.setItem('groceryContacts', JSON.stringify(contacts));
+        }
+
+        function renderContacts() {
+            const contacts = getContacts();
+            const list = document.getElementById('contacts-list');
+            const empty = document.getElementById('contacts-empty');
+            const colors = ['#ff6b35','#2ec4b6','#7b2ff7','#e71d36','#06d6a0','#118ab2'];
+
+            contacts.forEach((c, i) => {
+                const div = document.createElement('div');
+                div.className = 'contact-item';
+                div.style.cssText = 'display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:var(--radius-sm);margin-bottom:0.75rem;border-left:4px solid ' + colors[i % colors.length] + ';';
+                div.innerHTML = '<img src="images/avatar-' + ((i % 6) + 1) + '.webp" style="width:45px;height:45px;border-radius:50%;object-fit:cover;"><div style="flex:1;"><h4 style="font-size:0.95rem;">' + c.name + '</h4><p style="color:var(--gray);font-size:0.8rem;">' + c.address1 + (c.city ? ', ' + c.city : '') + (c.zip ? ', ' + c.zip : '') + '</p><p style="color:var(--gray);font-size:0.8rem;">' + c.phone + '</p></div><button class="btn btn-outline" style="padding:6px 14px;font-size:0.75rem;" onclick="showToast(\'Contact edited\')">Edit</button>';
+                list.appendChild(div);
+            });
+        }
+
+        function handleAddContact() {
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const address1 = document.getElementById('contact-address1').value.trim();
+            const city = document.getElementById('contact-city').value.trim();
+            const zip = document.getElementById('contact-zip').value.trim();
+
+            if (!name || !email || !phone || !address1 || !city || !zip) {
+                showToast('Please fill all required fields', 'error');
+                return;
+            }
+
+            const contacts = getContacts();
+            contacts.push({
+                name, email, phone, address1,
+                address2: document.getElementById('contact-address2').value.trim(),
+                city, state: document.getElementById('contact-state').value.trim(),
+                zip, country: document.getElementById('contact-country').value,
+                type: document.getElementById('contact-type').value,
+                instructions: document.getElementById('contact-instructions').value.trim(),
+                added: new Date().toISOString()
+            });
+            saveContacts(contacts);
+            showToast('Contact "' + name + '" saved successfully!');
+            clearContactForm();
+            renderContacts();
+        }
+
+        function clearContactForm() {
+            document.getElementById('contact-name').value = '';
+            document.getElementById('contact-email').value = '';
+            document.getElementById('contact-phone').value = '';
+            document.getElementById('contact-address1').value = '';
+            document.getElementById('contact-address2').value = '';
+            document.getElementById('contact-city').value = '';
+            document.getElementById('contact-state').value = '';
+            document.getElementById('contact-zip').value = '';
+            document.getElementById('contact-instructions').value = '';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderContacts();
+        });
+    </script>
+</body>
+</html>

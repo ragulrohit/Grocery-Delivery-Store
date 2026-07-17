@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading customers...</p></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/stackly-logo.webp" alt="Stackly"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html" class="active">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-bg page-bg-customers" style="padding-top:90px;min-height:100vh;">
+        <div class="section">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">Made for real households</span>
+                <h1>&#128101; Our Customers</h1>
+                <p>Meet the community behind every basket and see how feedback helps us improve freshness, selection and delivery.</p>
+                <div class="page-hero-points"><span>5,600+ shoppers</span><span>98% satisfaction</span><span>Loyalty benefits</span></div>
+                <img src="images/hero-customers-v2.png" alt="A happy family unpacking a fresh grocery delivery">
+            </div>
+
+            <div class="stats-grid animate-fadeInUp delay-1">
+                <div class="stat-card"><div class="stat-icon">&#128101;</div><div class="stat-info"><h3 class="counter" data-target="5624">0</h3><p>Total Customers</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#128257;</div><div class="stat-info"><h3 class="counter" data-target="3842">0</h3><p>Returning Customers</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#11088;</div><div class="stat-info"><h3 class="counter" data-target="4892">0</h3><p>5-Star Reviews</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#128172;</div><div class="stat-info"><h3 class="counter" data-target="98">0</h3><p>% Satisfaction</p></div></div>
+            </div>
+
+            <div class="charts-grid animate-fadeInUp delay-2">
+                <div class="chart-card">
+                    <h3>&#128202; Customer Demographics</h3>
+                    <div class="chart-container">
+                        <canvas id="customerPie" width="400" height="300" class="pie-chart"></canvas>
+                        <div class="chart-legend"></div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>&#128200; Customer Growth</h3>
+                    <div class="chart-container">
+                        <canvas id="customerGrowth" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header animate-fadeInUp delay-3" style="margin-top:2rem;">
+                <h2>Customer Reviews</h2>
+                <p>What our customers are saying about us</p>
+            </div>
+
+            <div class="features-grid animate-fadeInUp delay-4">
+                <div class="testimonial-card">
+                    <img src="images/avatar-1.webp" alt="Sarah">
+                    <p>"Absolutely love this service! Fresh products every time and super fast delivery. Best grocery app ever!"</p>
+                    <h4>Sarah Johnson</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/avatar-2.webp" alt="Mike">
+                    <p>"The delivery is always on time and the quality of products is consistently excellent. Highly recommended!"</p>
+                    <h4>Mike Peterson</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/avatar-3.webp" alt="Emily">
+                    <p>"Amazing variety of organic products. The prices are very competitive and the app is easy to use."</p>
+                    <h4>Emily Davis</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+            </div>
+
+            <div class="features-grid animate-fadeInUp delay-5" style="margin-top:2rem;">
+                <div class="testimonial-card">
+                    <img src="images/avatar-4.webp" alt="James">
+                    <p>"Great customer support! Had an issue with my order and they resolved it within minutes."</p>
+                    <h4>James Wilson</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/avatar-5.webp" alt="Lisa">
+                    <p>"I've been using this for 6 months now and never had a bad experience. Keep up the great work!"</p>
+                    <h4>Lisa Anderson</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/avatar-6.webp" alt="Robert">
+                    <p>"The subscription plan saves me so much money. Free delivery and exclusive discounts!"</p>
+                    <h4>Robert Brown</h4>
+                    <div class="rating" style="margin-top:0.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+            </div>
+
+            <div class="table-card animate-fadeInUp delay-6" style="margin-top:2rem;">
+                <h3>&#128100; Top Customers</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Customer</th><th>Orders</th><th>Total Spent</th><th>Member Since</th><th>Rating</th></tr></thead>
+                        <tbody>
+                            <tr><td style="display:flex;align-items:center;gap:10px;"><img src="images/avatar-1.webp" style="width:35px;height:35px;border-radius:50%;"> Sarah Johnson</td><td>156</td><td>$4,892.50</td><td>Jan 2024</td><td>&#11088; 4.9</td></tr>
+                            <tr><td style="display:flex;align-items:center;gap:10px;"><img src="images/avatar-2.webp" style="width:35px;height:35px;border-radius:50%;"> Mike Peterson</td><td>134</td><td>$3,756.20</td><td>Mar 2024</td><td>&#11088; 4.8</td></tr>
+                            <tr><td style="display:flex;align-items:center;gap:10px;"><img src="images/avatar-3.webp" style="width:35px;height:35px;border-radius:50%;"> Emily Davis</td><td>128</td><td>$3,540.00</td><td>Feb 2024</td><td>&#11088; 4.9</td></tr>
+                            <tr><td style="display:flex;align-items:center;gap:10px;"><img src="images/avatar-4.webp" style="width:35px;height:35px;border-radius:50%;"> James Wilson</td><td>112</td><td>$2,980.75</td><td>Apr 2024</td><td>&#11088; 4.7</td></tr>
+                            <tr><td style="display:flex;align-items:center;gap:10px;"><img src="images/avatar-5.webp" style="width:35px;height:35px;border-radius:50%;"> Lisa Anderson</td><td>98</td><td>$2,654.30</td><td>May 2024</td><td>&#11088; 4.8</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="editorial-panel animate-on-scroll">
+            <img src="images/product-dairy-pack.png" alt="A carefully selected dairy pack for a regular customer" loading="lazy">
+            <div class="editorial-copy"><p class="eyebrow">Community first</p><h2>Built around the way customers really shop.</h2><p>Feedback shapes our assortment, delivery windows and service improvements every week.</p><ul class="benefit-list"><li>Personal favorites make repeat shopping faster</li><li>Responsive support before and after delivery</li><li>Loyalty benefits for our regular households</li></ul><a href="contact.html" class="btn btn-primary">Add a delivery contact &#8594;</a></div>
+        </div>
+    </div>
+
+    <footer class="footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                drawPieChart('customerPie', [2100, 1500, 1200, 824], ['#7b2ff7','#a855f7','#c084fc','#e1bee7'], ['Age 18-30', 'Age 31-45', 'Age 46-60', 'Age 60+']);
+                drawLineChart('customerGrowth', [320, 480, 650, 820, 1100, 1450, 1800, 2300, 2900, 3600, 4500, 5624], ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], '#7b2ff7');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

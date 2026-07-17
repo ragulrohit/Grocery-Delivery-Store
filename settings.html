@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading settings...</p></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/stackly-logo.webp" alt="Stackly"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html" class="active">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-bg page-bg-settings" style="padding-top:90px;min-height:100vh;">
+        <div class="section">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">Personal, secure and simple</span>
+                <h1>&#9881; Settings</h1>
+                <p>Keep your profile, store details, notifications and security preferences aligned with the way you shop and work.</p>
+                <div class="page-hero-points"><span>Profile controls</span><span>Smart alerts</span><span>Secure access</span></div>
+                <img src="images/hero-settings-v2.png" alt="A shopper personalizing grocery preferences on a tablet">
+            </div>
+
+            <div class="tabs animate-fadeInUp delay-1" data-group="settings-tabs" style="justify-content:center;margin-bottom:2rem;">
+                <button class="tab-btn active" data-target="settings-profile" data-group="settings-tabs">Profile</button>
+                <button class="tab-btn" data-target="settings-store" data-group="settings-tabs">Store</button>
+                <button class="tab-btn" data-target="settings-notifications" data-group="settings-tabs">Notifications</button>
+                <button class="tab-btn" data-target="settings-security" data-group="settings-tabs">Security</button>
+                <button class="tab-btn" data-target="settings-appearance" data-group="settings-tabs">Appearance</button>
+            </div>
+
+            <div id="settings-profile" class="tab-content active" data-group="settings-tabs">
+                <div class="settings-section animate-fadeInUp">
+                    <h3>&#128100; Profile Information</h3>
+                    <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;">
+                        <img src="images/avatar-1.webp" style="width:100px;height:100px;border-radius:50%;border:4px solid var(--primary);">
+                        <div>
+                            <h4 id="settings-name">User</h4>
+                            <p style="color:var(--gray);">Member since January 2026</p>
+                            <button class="btn btn-outline" style="margin-top:0.5rem;padding:6px 16px;" onclick="showToast('Upload feature coming soon!')">Change Photo</button>
+                        </div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="form-group"><label>Full Name</label><input type="text" id="setting-fullname" placeholder="Your name"></div>
+                        <div class="form-group"><label>Email Address</label><input type="email" id="setting-email" placeholder="Your email"></div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="form-group"><label>Phone Number</label><input type="tel" id="setting-phone" placeholder="Your phone"></div>
+                        <div class="form-group"><label>Address</label><input type="text" placeholder="Your address"></div>
+                    </div>
+                    <div class="form-group"><label>Bio</label><textarea style="width:100%;padding:12px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;min-height:80px;resize:vertical;" placeholder="Tell us about yourself..."></textarea></div>
+                    <button class="btn btn-primary" onclick="showToast('Profile updated successfully!')">Save Changes &#128190;</button>
+                </div>
+            </div>
+
+            <div id="settings-store" class="tab-content" data-group="settings-tabs">
+                <div class="settings-section animate-fadeInUp">
+                    <h3>&#127978; Store Settings</h3>
+                    <div class="settings-row">
+                        <div class="form-group"><label>Store Name</label><input type="text" value="Grocery Delivery Store"></div>
+                        <div class="form-group"><label>Store Email</label><input type="email" value="store@grocery.com"></div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="form-group"><label>Store Phone</label><input type="tel" value="+1 234 567 890"></div>
+                        <div class="form-group"><label>Store Address</label><input type="text" value="123 Grocery Street, Food City"></div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="form-group"><label>Business Hours (Open)</label><input type="time" value="07:00"></div>
+                        <div class="form-group"><label>Business Hours (Close)</label><input type="time" value="23:00"></div>
+                    </div>
+                    <div class="form-group"><label>Currency</label><select style="width:100%;padding:12px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;"><option>USD ($)</option><option>EUR (&euro;)</option><option>GBP (&pound;)</option><option>INR (&#8377;)</option></select></div>
+                    <button class="btn btn-primary" onclick="showToast('Store settings saved!')">Save Changes &#128190;</button>
+                </div>
+            </div>
+
+            <div id="settings-notifications" class="tab-content" data-group="settings-tabs">
+                <div class="settings-section animate-fadeInUp">
+                    <h3>&#128276; Notification Preferences</h3>
+                    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>Email Notifications</strong><br><small style="color:var(--gray);">Receive order updates via email</small></span>
+                            <input type="checkbox" checked style="width:20px;height:20px;accent-color:var(--primary);">
+                        </label>
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>SMS Notifications</strong><br><small style="color:var(--gray);">Get text messages for delivery updates</small></span>
+                            <input type="checkbox" checked style="width:20px;height:20px;accent-color:var(--primary);">
+                        </label>
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>Push Notifications</strong><br><small style="color:var(--gray);">Browser push notifications</small></span>
+                            <input type="checkbox" style="width:20px;height:20px;accent-color:var(--primary);">
+                        </label>
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>Marketing Emails</strong><br><small style="color:var(--gray);">Receive offers and promotional emails</small></span>
+                            <input type="checkbox" checked style="width:20px;height:20px;accent-color:var(--primary);">
+                        </label>
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>Weekly Newsletter</strong><br><small style="color:var(--gray);">Weekly summary of deals and new products</small></span>
+                            <input type="checkbox" style="width:20px;height:20px;accent-color:var(--primary);">
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="showToast('Notification preferences saved!')">Save Preferences &#128190;</button>
+                </div>
+            </div>
+
+            <div id="settings-security" class="tab-content" data-group="settings-tabs">
+                <div class="settings-section animate-fadeInUp">
+                    <h3>&#128274; Security Settings</h3>
+                    <div class="settings-row">
+                        <div class="form-group"><label>Current Password</label><input type="password" placeholder="Enter current password"></div>
+                        <div class="form-group"><label>New Password</label><input type="password" placeholder="Enter new password"></div>
+                    </div>
+                    <div class="form-group"><label>Confirm New Password</label><input type="password" placeholder="Confirm new password"></div>
+                    <button class="btn btn-primary" onclick="showToast('Password updated successfully!')">Update Password &#128274;</button>
+                </div>
+                <div class="settings-section animate-fadeInUp" style="margin-top:2rem;">
+                    <h3>&#128272; Two-Factor Authentication</h3>
+                    <p style="color:var(--gray);margin-bottom:1rem;">Add an extra layer of security to your account</p>
+                    <div style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);">
+                        <span><strong>Enable 2FA</strong><br><small style="color:var(--gray);">Use authenticator app for verification</small></span>
+                        <button class="btn btn-secondary" onclick="showToast('2FA setup coming soon!')">Enable &#128274;</button>
+                    </div>
+                </div>
+                <div class="settings-section animate-fadeInUp" style="margin-top:2rem;">
+                    <h3>&#128721; Danger Zone</h3>
+                    <p style="color:var(--gray);margin-bottom:1rem;">Irreversible actions for your account</p>
+                    <button class="btn btn-danger" onclick="if(confirm('Are you sure? This will delete your account!')){showToast('Account deletion requested','error');}">Delete Account &#128465;</button>
+                </div>
+            </div>
+
+            <div id="settings-appearance" class="tab-content" data-group="settings-tabs">
+                <div class="settings-section animate-fadeInUp">
+                    <h3>&#127912; Appearance Settings</h3>
+                    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>Dark Mode</strong><br><small style="color:var(--gray);">Switch to dark theme</small></span>
+                            <button id="darkModeToggle" class="btn btn-outline" style="padding:6px 16px;">Toggle</button>
+                        </label>
+                        <div style="padding:1rem;background:var(--light);border-radius:var(--radius-sm);">
+                            <strong>Accent Color</strong>
+                            <div style="display:flex;gap:10px;margin-top:0.5rem;">
+                                <div style="width:36px;height:36px;border-radius:50%;background:#ff6b35;cursor:pointer;border:3px solid var(--dark);" title="Orange"></div>
+                                <div style="width:36px;height:36px;border-radius:50%;background:#2ec4b6;cursor:pointer;" title="Teal"></div>
+                                <div style="width:36px;height:36px;border-radius:50%;background:#e71d36;cursor:pointer;" title="Red"></div>
+                                <div style="width:36px;height:36px;border-radius:50%;background:#7b2ff7;cursor:pointer;" title="Purple"></div>
+                                <div style="width:36px;height:36px;border-radius:50%;background:#06d6a0;cursor:pointer;" title="Green"></div>
+                                <div style="width:36px;height:36px;border-radius:50%;background:#118ab2;cursor:pointer;" title="Blue"></div>
+                            </div>
+                        </div>
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>Animations</strong><br><small style="color:var(--gray);">Enable smooth transitions and animations</small></span>
+                            <input type="checkbox" checked style="width:20px;height:20px;accent-color:var(--primary);">
+                        </label>
+                        <label style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:var(--light);border-radius:var(--radius-sm);cursor:pointer;">
+                            <span><strong>Compact Mode</strong><br><small style="color:var(--gray);">Reduce spacing for a denser layout</small></span>
+                            <input type="checkbox" style="width:20px;height:20px;accent-color:var(--primary);">
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="showToast('Appearance settings saved!')">Save Preferences &#128190;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="editorial-panel animate-on-scroll">
+            <img src="images/product-beverage-mix.png" alt="A personalized selection of refreshing beverages" loading="lazy">
+            <div class="editorial-copy"><p class="eyebrow">Make it yours</p><h2>Set up shopping that works your way.</h2><p>Keep your account accurate so checkout, updates and future deliveries feel effortless.</p><ul class="benefit-list"><li>Maintain contact and delivery preferences</li><li>Choose the notifications that matter to you</li><li>Keep account access protected and current</li></ul><a href="products.html" class="btn btn-primary">Continue shopping &#8594;</a></div>
+        </div>
+    </div>
+
+    <footer class="footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = getCurrentUser();
+            if (user) {
+                const nameEl = document.getElementById('settings-name');
+                const fullnameEl = document.getElementById('setting-fullname');
+                const emailEl = document.getElementById('setting-email');
+                const phoneEl = document.getElementById('setting-phone');
+                if (nameEl) nameEl.textContent = user.name;
+                if (fullnameEl) fullnameEl.value = user.name;
+                if (emailEl) emailEl.value = user.email;
+                if (phoneEl) phoneEl.value = user.phone || '';
+            }
+        });
+    </script>
+</body>
+</html>

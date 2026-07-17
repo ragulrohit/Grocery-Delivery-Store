@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading products...</p></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/stackly-logo.webp" alt="Stackly"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-bg page-bg-products" style="padding-top:90px;min-height:100vh;">
+        <div class="section">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">Fresh picks, every day</span>
+                <h1>&#128722; Our Products</h1>
+                <p>Browse farm-fresh produce, pantry essentials and household favorites selected for quality, value and everyday convenience.</p>
+                <div class="page-hero-points"><span>500+ essentials</span><span>Quality checked</span><span>Seasonal arrivals</span></div>
+                <img src="images/hero-products-v2.png" alt="Fresh groceries arranged for easy online shopping">
+            </div>
+
+            <div class="search-bar animate-fadeInUp delay-1">
+                <input type="text" placeholder="Search products...">
+                <button>&#128269;</button>
+            </div>
+
+            <div class="tabs" data-group="product-tabs" style="justify-content:center;margin-bottom:2rem;">
+                <button class="tab-btn active" data-target="tab-all" data-group="product-tabs">All</button>
+                <button class="tab-btn" data-target="tab-fruits" data-group="product-tabs">Fruits</button>
+                <button class="tab-btn" data-target="tab-vegs" data-group="product-tabs">Vegetables</button>
+                <button class="tab-btn" data-target="tab-dairy" data-group="product-tabs">Dairy</button>
+                <button class="tab-btn" data-target="tab-bakery" data-group="product-tabs">Bakery</button>
+                <button class="tab-btn" data-target="tab-drinks" data-group="product-tabs">Beverages</button>
+                <button class="tab-btn" data-target="tab-snacks" data-group="product-tabs">Snacks</button>
+            </div>
+
+            <div id="tab-all" class="tab-content active" data-group="product-tabs">
+                <div class="products-grid">
+                    <div class="product-card animate-on-scroll"><span class="product-badge">HOT</span><img src="images/fruits.webp" alt="Fruits" class="product-image"><div class="product-info"><h3>Organic Fruit Basket</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (128)</div><div class="price">$29.99 <old>$39.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Organic Fruit Basket',29.99,'images/fruits.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:var(--accent4)">NEW</span><img src="images/vegetables.webp" alt="Vegetables" class="product-image"><div class="product-info"><h3>Farm Fresh Vegetables</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (89)</div><div class="price">$19.99 <old>$24.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Farm Fresh Vegetables',19.99,'images/vegetables.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:var(--accent5)">POPULAR</span><img src="images/dairy.webp" alt="Dairy" class="product-image"><div class="product-info"><h3>Premium Dairy Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (256)</div><div class="price">$15.99 <old>$21.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Premium Dairy Pack',15.99,'images/dairy.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge">SALE</span><img src="images/bakery.webp" alt="Bakery" class="product-image"><div class="product-info"><h3>Fresh Bakery Combo</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (167)</div><div class="price">$12.99 <old>$18.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Fresh Bakery Combo',12.99,'images/bakery.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:var(--accent2)">BEST</span><img src="images/beverages.webp" alt="Beverages" class="product-image"><div class="product-info"><h3>Tropical Juice Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (198)</div><div class="price">$9.99 <old>$14.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Tropical Juice Pack',9.99,'images/beverages.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge">NEW</span><img src="images/snacks.webp" alt="Snacks" class="product-image"><div class="product-info"><h3>Gourmet Snack Box</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (143)</div><div class="price">$18.99 <old>$25.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Gourmet Snack Box',18.99,'images/snacks.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:#c62828">FRESH</span><img src="images/meat.webp" alt="Meat" class="product-image"><div class="product-info"><h3>Premium Meat Selection</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (210)</div><div class="price">$34.99 <old>$44.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Premium Meat Selection',34.99,'images/meat.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:#00695c">OCEAN</span><img src="images/seafood.webp" alt="Seafood" class="product-image"><div class="product-info"><h3>Fresh Seafood Mix</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (95)</div><div class="price">$39.99 <old>$52.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Fresh Seafood Mix',39.99,'images/seafood.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:#795548">WHOLE</span><img src="images/grains.webp" alt="Grains" class="product-image"><div class="product-info"><h3>Whole Grain Mix</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (112)</div><div class="price">$11.99 <old>$16.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Whole Grain Mix',11.99,'images/grains.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:#e65100">AROMATIC</span><img src="images/spices.webp" alt="Spices" class="product-image"><div class="product-info"><h3>Exotic Spice Collection</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (178)</div><div class="price">$14.99 <old>$22.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Exotic Spice Collection',14.99,'images/spices.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:#1565c0">FROZEN</span><img src="images/frozen.webp" alt="Frozen" class="product-image"><div class="product-info"><h3>Frozen Delights Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (134)</div><div class="price">$22.99 <old>$30.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Frozen Delights Pack',22.99,'images/frozen.webp')">Add to Cart &#128722;</button></div></div>
+                    <div class="product-card animate-on-scroll"><span class="product-badge" style="background:#2e7d32">100% ORGANIC</span><img src="images/organic.webp" alt="Organic" class="product-image"><div class="product-info"><h3>Organic Health Basket</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (301)</div><div class="price">$27.99 <old>$35.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Organic Health Basket',27.99,'images/organic.webp')">Add to Cart &#128722;</button></div></div>
+                </div>
+            </div>
+
+            <div class="content-grid animate-fadeInUp" style="margin-top:3rem;">
+                <div class="content-card">
+                    <img src="images/hero-delivery.webp" alt="Fast Delivery">
+                    <div class="content-body">
+                        <h3>Same-Day Delivery Available</h3>
+                        <p>Order before 2PM and get your groceries delivered the same day. Our express delivery ensures freshness is locked in from store to your kitchen.</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/hero-offers.webp" alt="Weekly Deals">
+                    <div class="content-body">
+                        <h3>Weekly Deals on Fresh Produce</h3>
+                        <p>Check out our rotating weekly specials on fruits, vegetables, and dairy. New deals every Monday with savings up to 50% on selected items.</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/dash-customers.webp" alt="Quality Products">
+                    <div class="content-body">
+                        <h3>Sourced from Local Farms</h3>
+                        <p>We partner with over 200 local farms to bring you the freshest produce. Supporting local farmers means better quality and a smaller carbon footprint.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-fruits" class="tab-content" data-group="product-tabs">
+                <div class="products-grid">
+                    <div class="product-card"><span class="product-badge">HOT</span><img src="images/fruits.webp" alt="Fruits" class="product-image"><div class="product-info"><h3>Organic Fruit Basket</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (128)</div><div class="price">$29.99 <old>$39.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Organic Fruit Basket',29.99,'images/fruits.webp')">Add to Cart</button></div></div>
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent4)">NEW</span><img src="images/cat-fruits.webp" alt="Fruits" class="product-image"><div class="product-info"><h3>Seasonal Fruit Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (86)</div><div class="price">$24.99 <old>$32.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Seasonal Fruit Pack',24.99,'images/cat-fruits.webp')">Add to Cart</button></div></div>
+                </div>
+            </div>
+
+            <div id="tab-vegs" class="tab-content" data-group="product-tabs">
+                <div class="products-grid">
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent4)">FRESH</span><img src="images/vegetables.webp" alt="Vegetables" class="product-image"><div class="product-info"><h3>Farm Fresh Vegetables</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (89)</div><div class="price">$19.99 <old>$24.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Farm Fresh Vegetables',19.99,'images/vegetables.webp')">Add to Cart</button></div></div>
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent4)">GREEN</span><img src="images/cat-vegetables.webp" alt="Vegetables" class="product-image"><div class="product-info"><h3>Green Veggie Box</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (102)</div><div class="price">$16.99 <old>$22.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Green Veggie Box',16.99,'images/cat-vegetables.webp')">Add to Cart</button></div></div>
+                </div>
+            </div>
+
+            <div id="tab-dairy" class="tab-content" data-group="product-tabs">
+                <div class="products-grid">
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent5)">PREMIUM</span><img src="images/dairy.webp" alt="Dairy" class="product-image"><div class="product-info"><h3>Premium Dairy Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (256)</div><div class="price">$15.99 <old>$21.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Premium Dairy Pack',15.99,'images/dairy.webp')">Add to Cart</button></div></div>
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent5)">FRESH</span><img src="images/cat-dairy.webp" alt="Dairy" class="product-image"><div class="product-info"><h3>Daily Fresh Dairy</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (145)</div><div class="price">$12.99 <old>$18.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Daily Fresh Dairy',12.99,'images/cat-dairy.webp')">Add to Cart</button></div></div>
+                </div>
+            </div>
+
+            <div id="tab-bakery" class="tab-content" data-group="product-tabs">
+                <div class="products-grid">
+                    <div class="product-card"><span class="product-badge">FRESH</span><img src="images/bakery.webp" alt="Bakery" class="product-image"><div class="product-info"><h3>Fresh Bakery Combo</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (167)</div><div class="price">$12.99 <old>$18.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Fresh Bakery Combo',12.99,'images/bakery.webp')">Add to Cart</button></div></div>
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent3)">BAKED</span><img src="images/cat-bakery.webp" alt="Bakery" class="product-image"><div class="product-info"><h3>Artisan Bread Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (198)</div><div class="price">$10.99 <old>$15.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Artisan Bread Pack',10.99,'images/cat-bakery.webp')">Add to Cart</button></div></div>
+                </div>
+            </div>
+
+            <div id="tab-drinks" class="tab-content" data-group="product-tabs">
+                <div class="products-grid">
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent1)">COOL</span><img src="images/beverages.webp" alt="Beverages" class="product-image"><div class="product-info"><h3>Tropical Juice Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (198)</div><div class="price">$9.99 <old>$14.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Tropical Juice Pack',9.99,'images/beverages.webp')">Add to Cart</button></div></div>
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent1)">FRESH</span><img src="images/cat-beverages.webp" alt="Beverages" class="product-image"><div class="product-info"><h3>Fresh Beverage Mix</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (132)</div><div class="price">$11.99 <old>$16.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Fresh Beverage Mix',11.99,'images/cat-beverages.webp')">Add to Cart</button></div></div>
+                </div>
+            </div>
+
+            <div id="tab-snacks" class="tab-content" data-group="product-tabs">
+                <div class="products-grid">
+                    <div class="product-card"><span class="product-badge">TASTY</span><img src="images/snacks.webp" alt="Snacks" class="product-image"><div class="product-info"><h3>Gourmet Snack Box</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (143)</div><div class="price">$18.99 <old>$25.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Gourmet Snack Box',18.99,'images/snacks.webp')">Add to Cart</button></div></div>
+                    <div class="product-card"><span class="product-badge" style="background:var(--accent2)">CRUNCHY</span><img src="images/cat-snacks.webp" alt="Snacks" class="product-image"><div class="product-info"><h3>Crunchy Snack Pack</h3><div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (176)</div><div class="price">$13.99 <old>$19.99</old></div><button class="btn btn-primary add-to-cart" onclick="addToCart('Crunchy Snack Pack',13.99,'images/cat-snacks.webp')">Add to Cart</button></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="editorial-panel animate-on-scroll">
+            <img src="images/product-fruit-basket.png" alt="A colorful premium fruit basket" loading="lazy">
+            <div class="editorial-copy"><p class="eyebrow">Picked with purpose</p><h2>Everything for a fresher weekly shop.</h2><p>Explore everyday staples and seasonal discoveries sourced for dependable quality and value.</p><ul class="benefit-list"><li>New seasonal produce added every week</li><li>Clear categories for quick, stress-free shopping</li><li>Quality checked before every order is packed</li></ul><a href="offers.html" class="btn btn-secondary">See this week's savings &#8594;</a></div>
+        </div>
+    </div>
+
+    <footer class="footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

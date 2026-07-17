@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Tracking - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Tracking deliveries...</p></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/stackly-logo.webp" alt="Stackly"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="delivery.html" class="active">Delivery</a></li>
+                <li><a href="contact.html">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-bg page-bg-delivery" style="padding-top:90px;min-height:100vh;">
+        <div class="section">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">From our store to your door</span>
+                <h1>&#128666; Delivery Tracking</h1>
+                <p>See real-time progress, estimated arrival and delivery details while your fresh groceries travel safely to your doorstep.</p>
+                <div class="page-hero-points"><span>Live tracking</span><span>30-minute average</span><span>Contactless option</span></div>
+                <img src="images/hero-delivery-v2.png" alt="A grocery delivery arriving at a customer's home">
+            </div>
+
+            <div class="stats-grid animate-fadeInUp delay-1">
+                <div class="stat-card"><div class="stat-icon">&#128666;</div><div class="stat-info"><h3 class="counter" data-target="48">0</h3><p>Out for Delivery</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#9989;</div><div class="stat-info"><h3 class="counter" data-target="156">0</h3><p>Delivered Today</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#128337;</div><div class="stat-info"><h3>25 min</h3><p>Avg. Delivery Time</p></div></div>
+                <div class="stat-card"><div class="stat-icon">&#11088;</div><div class="stat-info"><h3>4.8/5</h3><p>Delivery Rating</p></div></div>
+            </div>
+
+            <div class="section-header animate-fadeInUp delay-2" style="margin-top:2rem;">
+                <h2>Live Delivery Tracking</h2>
+                <p>Track your order in real-time</p>
+            </div>
+
+            <div class="chart-card animate-fadeInUp delay-3" style="margin-bottom:2rem;">
+                <h3>&#128205; Order #ORD-2840 - Delivery Status</h3>
+                <div class="tracker-steps">
+                    <div class="tracker-step completed">
+                        <div class="step-icon">&#10003;</div>
+                        <p>Order Placed</p>
+                    </div>
+                    <div class="tracker-step completed">
+                        <div class="step-icon">&#10003;</div>
+                        <p>Confirmed</p>
+                    </div>
+                    <div class="tracker-step completed">
+                        <div class="step-icon">&#10003;</div>
+                        <p>Packed</p>
+                    </div>
+                    <div class="tracker-step active">
+                        <div class="step-icon">&#128666;</div>
+                        <p>Out for Delivery</p>
+                    </div>
+                    <div class="tracker-step">
+                        <div class="step-icon">&#127968;</div>
+                        <p>Delivered</p>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:2rem;">
+                    <img src="images/delivery-map.webp" alt="Delivery Map" style="max-width:100%;border-radius:var(--radius);box-shadow:var(--shadow);">
+                    <p style="margin-top:1rem;color:var(--gray);">Estimated arrival: <strong style="color:var(--primary);">25 minutes</strong></p>
+                </div>
+            </div>
+
+            <div class="charts-grid animate-fadeInUp delay-3">
+                <div class="chart-card">
+                    <h3>&#128202; Delivery Performance</h3>
+                    <div class="chart-container">
+                        <canvas id="deliveryPie" width="400" height="300" class="pie-chart"></canvas>
+                        <div class="chart-legend"></div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>&#128197; Daily Deliveries This Week</h3>
+                    <div class="chart-container">
+                        <canvas id="deliveryBar" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card animate-fadeInUp delay-4" style="margin-top:2rem;">
+                <h3>&#128666; Active Deliveries</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Order ID</th><th>Customer</th><th>Address</th><th>Driver</th><th>Status</th><th>ETA</th></tr></thead>
+                        <tbody>
+                            <tr><td>#ORD-2840</td><td>Mike Peterson</td><td>123 Main St</td><td>John D.</td><td><span class="status-badge status-active">In Transit</span></td><td>25 min</td></tr>
+                            <tr><td>#ORD-2839</td><td>Emily Davis</td><td>456 Oak Ave</td><td>Mark S.</td><td><span class="status-badge status-pending">Preparing</span></td><td>45 min</td></tr>
+                            <tr><td>#ORD-2835</td><td>Jennifer Martinez</td><td>789 Pine Rd</td><td>Lisa R.</td><td><span class="status-badge status-active">In Transit</span></td><td>15 min</td></tr>
+                            <tr><td>#ORD-2834</td><td>David Lee</td><td>321 Elm St</td><td>Tom B.</td><td><span class="status-badge status-pending">Queued</span></td><td>60 min</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-grid animate-fadeInUp delay-5" style="margin-top:2rem;">
+                <div class="content-card">
+                    <img src="images/delivery-truck.webp" alt="Delivery Truck">
+                    <div class="content-body">
+                        <h3>Our Delivery Fleet</h3>
+                        <p>We have 50+ delivery vehicles ensuring quick and safe delivery across the city. Temperature-controlled for fresh produce.</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/delivery-package.webp" alt="Package">
+                    <div class="content-body">
+                        <h3>Packaging Quality</h3>
+                        <p>Eco-friendly packaging that keeps your groceries fresh. We use biodegradable materials for a sustainable future.</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/delivery-map.webp" alt="Map">
+                    <div class="content-body">
+                        <h3>Coverage Area</h3>
+                        <p>We deliver across 50+ neighborhoods. Check if we deliver to your area by entering your zip code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="editorial-panel animate-on-scroll">
+            <img src="images/home-doorstep-delivery.png" alt="Fresh groceries delivered safely to a home doorway" loading="lazy">
+            <div class="editorial-copy"><p class="eyebrow">Handled with care</p><h2>Fresh at the door, right when expected.</h2><p>Every route is planned around food safety, dependable timing and useful delivery updates.</p><ul class="benefit-list"><li>Temperature-aware packing for chilled products</li><li>Live progress from packing through arrival</li><li>Contactless drop-off available on every order</li></ul><a href="products.html" class="btn btn-secondary">Plan your next delivery &#8594;</a></div>
+        </div>
+    </div>
+
+    <footer class="footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                drawPieChart('deliveryPie', [156, 48, 12, 4], ['#06d6a0','#ff9f1c','#118ab2','#e71d36'], ['Delivered Today','In Transit','Preparing','Failed']);
+                drawBarChart('deliveryBar', [142, 168, 155, 180, 210, 195, 230], ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], ['#00bcd4','#009688','#4caf50','#ff9f1c','#ff6b35','#e71d36','#7b2ff7']);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

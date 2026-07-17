@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Creating your account...</p>
+    </div>
+
+    <div class="auth-page" style="background:linear-gradient(135deg,#06d6a0 0%,#118ab2 50%,#7b2ff7 100%);background-size:300% 300%;animation:colorShift 10s ease infinite;">
+        <div class="auth-shell animate-scaleIn">
+            <div class="auth-visual">
+                <img src="images/product-frozen-selection.png" alt="A colorful selection of convenient grocery favorites">
+                <div class="auth-visual-copy"><h1>Better groceries are just a few clicks away.</h1><p>Create an account to save favorites, schedule deliveries and unlock member-only offers.</p></div>
+            </div>
+        <div class="auth-container">
+            <div class="auth-header">
+                <img src="images/stackly-logo.webp" alt="Stackly">
+                <h2>Create Account</h2>
+                <p>Join us for fresh groceries delivery</p>
+            </div>
+            <form class="auth-form" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="signup-phone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-secondary">Create Account &#10140;</button>
+                <div class="divider"><span>or</span></div>
+                <div class="social-login">
+                    <button type="button" class="btn btn-outline" style="flex:1;justify-content:center;" onclick="showToast('Google signup coming soon!')">&#9679; Google</button>
+                    <button type="button" class="btn btn-outline" style="flex:1;justify-content:center;" onclick="showToast('Facebook signup coming soon!')">&#9679; Facebook</button>
+                </div>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                    <p style="margin-top:0.5rem;"><a href="index.html" style="color:var(--gray);font-weight:400;font-size:0.85rem;">&#8592; Back to Home</a></p>
+                </div>
+                <div class="auth-trust"><span>&#10003; Member prices</span><span>&#10003; Saved addresses</span><span>&#10003; Faster reorders</span></div>
+            </form>
+        </div>
+        </div>
+    </div>
+
+    <footer class="footer auth-footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

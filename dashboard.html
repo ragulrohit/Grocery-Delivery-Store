@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Grocery Delivery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading dashboard...</p>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/stackly-logo.webp" alt="Stackly">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html">Add Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <span id="user-greeting" style="font-weight:600;color:var(--dark);margin-right:10px;">Welcome</span>
+                <button class="btn btn-danger" onclick="logout()">Logout</button>
+            </div>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Dashboard Menu</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="active"><span class="icon">&#127968;</span> Dashboard</a></li>
+                <li><a href="products.html"><span class="icon">&#128722;</span> Products</a></li>
+                <li><a href="orders.html"><span class="icon">&#128230;</span> Orders</a></li>
+                <li><a href="offers.html"><span class="icon">&#127873;</span> Offers & Deals</a></li>
+                <li><a href="delivery.html"><span class="icon">&#128666;</span> Delivery</a></li>
+                <li><a href="contact.html"><span class="icon">&#128100;</span> Add Contact</a></li>
+            </ul>
+            <div class="sidebar-user">
+                <img src="images/avatar-1.webp" alt="User">
+                <div class="user-info">
+                    <h4 id="sidebar-user-name">User</h4>
+                    <p id="sidebar-user-email">user@email.com</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header page-hero animate-fadeInDown">
+                <span class="page-kicker">Your store, clearly connected</span>
+                <h1>&#127968; Dashboard Overview</h1>
+                <p>Bring sales, inventory, customers and delivery performance together so your team can act on what matters today.</p>
+                <div class="page-hero-points"><span>Live operations</span><span>Inventory signals</span><span>Daily insights</span></div>
+                <img src="images/hero-dashboard-v2.png" alt="A grocery manager reviewing live operations on a tablet">
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card animate-fadeInUp delay-1">
+                    <div class="stat-icon">&#128230;</div>
+                    <div class="stat-info">
+                        <h3 class="counter" data-target="2847">0</h3>
+                        <p>Total Orders</p>
+                        <div class="stat-change">&#8593; 12.5% this month</div>
+                    </div>
+                </div>
+                <div class="stat-card animate-fadeInUp delay-2">
+                    <div class="stat-icon">&#128176;</div>
+                    <div class="stat-info">
+                        <h3 class="counter" data-target="84520">0</h3>
+                        <p>Revenue ($)</p>
+                        <div class="stat-change">&#8593; 8.3% this month</div>
+                    </div>
+                </div>
+                <div class="stat-card animate-fadeInUp delay-3">
+                    <div class="stat-icon">&#128101;</div>
+                    <div class="stat-info">
+                        <h3 class="counter" data-target="5624">0</h3>
+                        <p>Customers</p>
+                        <div class="stat-change">&#8593; 15.2% this month</div>
+                    </div>
+                </div>
+                <div class="stat-card animate-fadeInUp delay-4">
+                    <div class="stat-icon">&#128722;</div>
+                    <div class="stat-info">
+                        <h3 class="counter" data-target="842">0</h3>
+                        <p>Products</p>
+                        <div class="stat-change">&#8593; 5.1% this month</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card animate-fadeInLeft delay-2">
+                    <h3>&#128202; Sales by Category</h3>
+                    <div class="chart-container">
+                        <canvas id="salesPieChart" width="400" height="300" class="pie-chart"></canvas>
+                        <div class="chart-legend"></div>
+                    </div>
+                </div>
+                <div class="chart-card animate-fadeInRight delay-3">
+                    <h3>&#128200; Revenue Trend</h3>
+                    <div class="chart-container">
+                        <canvas id="revenueLineChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card animate-fadeInUp delay-4">
+                    <h3>&#128202; Orders by Status</h3>
+                    <div class="chart-container">
+                        <canvas id="ordersPieChart" width="400" height="300" class="pie-chart"></canvas>
+                        <div class="chart-legend"></div>
+                    </div>
+                </div>
+                <div class="chart-card animate-fadeInUp delay-5">
+                    <h3>&#128197; Weekly Performance</h3>
+                    <div class="chart-container">
+                        <canvas id="weeklyBarChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card animate-fadeInUp delay-5">
+                <h3>&#128230; Recent Orders</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-2841</td>
+                                <td>Sarah Johnson</td>
+                                <td>5 items</td>
+                                <td>$67.50</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                                <td>Jul 16, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-2840</td>
+                                <td>Mike Peterson</td>
+                                <td>3 items</td>
+                                <td>$42.00</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>Jul 16, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-2839</td>
+                                <td>Emily Davis</td>
+                                <td>8 items</td>
+                                <td>$95.30</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>Jul 15, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-2838</td>
+                                <td>James Wilson</td>
+                                <td>2 items</td>
+                                <td>$28.99</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                                <td>Jul 15, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-2837</td>
+                                <td>Lisa Anderson</td>
+                                <td>6 items</td>
+                                <td>$73.20</td>
+                                <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                                <td>Jul 14, 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-grid animate-fadeInUp delay-6" style="margin-top:2rem;">
+                <div class="content-card">
+                    <img src="images/dash-orders.webp" alt="Orders">
+                    <div class="content-body">
+                        <h3>Manage Orders</h3>
+                        <p>View and manage all customer orders. Track delivery status and update order details.</p>
+                        <a href="orders.html" class="btn btn-primary" style="margin-top:1rem;">View Orders &#8594;</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/dash-products.webp" alt="Products">
+                    <div class="content-body">
+                        <h3>Product Catalog</h3>
+                        <p>Browse and manage your product inventory. Add new products and update pricing.</p>
+                        <a href="products.html" class="btn btn-secondary" style="margin-top:1rem;">View Products &#8594;</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <img src="images/dash-delivery.webp" alt="Delivery">
+                    <div class="content-body">
+                        <h3>Delivery Tracking</h3>
+                        <p>Track all active deliveries in real-time. Manage delivery routes and schedules.</p>
+                        <a href="delivery.html" class="btn btn-accent" style="margin-top:1rem;">Track Deliveries &#8594;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="editorial-panel animate-on-scroll">
+                <img src="images/home-seasonal-market.png" alt="A busy fresh market representing daily store operations" loading="lazy">
+                <div class="editorial-copy"><p class="eyebrow">Today at a glance</p><h2>Turn daily activity into better service.</h2><p>Keep the essentials visible as you move from sales performance to fulfillment and customer care.</p><ul class="benefit-list"><li>Review demand before updating inventory</li><li>Follow orders through the delivery pipeline</li><li>Use customer trends to guide promotions</li></ul><a href="reports.html" class="btn btn-primary">Explore detailed reports &#8594;</a></div>
+            </div>
+        </main>
+    </div>
+
+    <button class="sidebar-toggle">&#9776;</button>
+
+    <footer class="footer dashboard-footer" data-site-footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initDashboard();
+
+            setTimeout(() => {
+                drawPieChart('salesPieChart',
+                    [3500, 2800, 2200, 1800, 1500, 1200],
+                    ['#ff6b35','#2ec4b6','#e71d36','#7b2ff7','#ff9f1c','#118ab2'],
+                    ['Fruits', 'Vegetables', 'Dairy', 'Bakery', 'Beverages', 'Snacks']
+                );
+
+                drawPieChart('ordersPieChart',
+                    [1420, 680, 450, 297],
+                    ['#06d6a0','#ff9f1c','#118ab2','#e71d36'],
+                    ['Delivered', 'In Progress', 'Pending', 'Cancelled']
+                );
+
+                drawLineChart('revenueLineChart',
+                    [4200, 5800, 4900, 7200, 6500, 8100, 9200, 8400, 9800, 10500, 11200, 12800],
+                    ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                    '#ff6b35'
+                );
+
+                drawBarChart('weeklyBarChart',
+                    [180, 220, 195, 250, 310, 280, 340],
+                    ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                    ['#ff6b35','#2ec4b6','#e71d36','#7b2ff7','#ff9f1c','#06d6a0','#118ab2']
+                );
+            }, 500);
+        });
+    </script>
+</body>
+</html>
