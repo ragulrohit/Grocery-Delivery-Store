@@ -16,11 +16,27 @@ function initAdminPortal() {
     const sidebar = document.querySelector('[data-admin-sidebar]');
     if (!shell || !sidebar) return;
 
+    if (typeof checkAuth === 'function' && !checkAuth()) return;
+
     const activePage = document.body.dataset.adminPage || 'dashboard';
     const currentUser = typeof getCurrentUser === 'function' ? getCurrentUser() : null;
     const userName = currentUser?.name || 'Store Manager';
     const userEmail = currentUser?.email || 'manager@grocery.com';
     const initial = userName.charAt(0).toUpperCase();
+
+    const escapeAdminText = value => String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    })[character]);
+    const safeUserName = escapeAdminText(userName);
+    const safeUserEmail = escapeAdminText(userEmail);
+    const safeInitial = escapeAdminText(initial);
+    const adminMain = document.querySelector('.admin-main');
+    if (adminMain && !adminMain.querySelector('.admin-mobile-brand')) {
+        adminMain.insertAdjacentHTML('afterbegin', `
+            <a class="admin-mobile-brand" href="index.html" aria-label="Stackly home">
+                <img src="images/stackly-logo.webp" alt="Stackly">
+            </a>`);
+    }
 
     const menuMarkup = adminMenuItems.map(item => `
         <a class="admin-nav-link ${item.id === activePage ? 'active' : ''}" href="${item.href}">
@@ -31,7 +47,7 @@ function initAdminPortal() {
 
     sidebar.innerHTML = `
         <a class="admin-brand" href="index.html"><img src="images/stackly-logo.webp" alt="Stackly"></a>
-        <div class="admin-user-card"><span class="admin-avatar">${initial}</span><div><small>Welcome back</small><strong>${userName}</strong><span>${userEmail}</span></div></div>
+        <div class="admin-user-card"><span class="admin-avatar">${safeInitial}</span><div><small>Welcome back</small><strong>${safeUserName}</strong><span>${safeUserEmail}</span></div></div>
         <p class="admin-nav-label">Store control</p>
         <nav class="admin-nav">${menuMarkup}</nav>
         <div class="admin-sidebar-actions"><button type="button" onclick="openAdminLogout()"><span>&#10162;</span> Logout</button></div>`;
@@ -53,12 +69,38 @@ function initAdminPortal() {
             </div>`);
     }
 
-    const mobileToggle = document.querySelector('[data-admin-toggle]');
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+    const profileButton = document.querySelector('.admin-profile-btn');
+    if (profileButton) {
+        profileButton.innerHTML = `<span class="admin-profile-avatar">${safeInitial}</span><span class="admin-profile-copy"><strong>${safeUserName}</strong><small>${safeUserEmail}</small></span>`;
+        profileButton.setAttribute('aria-label', `Signed in as ${userEmail}`);
+        profileButton.title = userEmail;
     }
-    document.querySelector('.admin-main')?.addEventListener('click', event => {
-        if (window.innerWidth <= 980 && !event.target.closest('[data-admin-toggle]')) sidebar.classList.remove('open');
+
+    document.body.insertAdjacentHTML('beforeend', '<button type="button" class="admin-sidebar-backdrop" data-admin-sidebar-backdrop aria-label="Close menu"></button>');
+    const sidebarBackdrop = document.querySelector('[data-admin-sidebar-backdrop]');
+    const mobileToggle = document.querySelector('[data-admin-toggle]');
+    const closeSidebar = () => {
+        sidebar.classList.remove('open');
+        document.body.classList.remove('admin-menu-open');
+        mobileToggle?.setAttribute('aria-expanded', 'false');
+        mobileToggle?.setAttribute('aria-label', 'Open menu');
+    };
+    if (mobileToggle) {
+        mobileToggle.innerHTML = '<span aria-hidden="true">&#9776;</span><span>Menu</span>';
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = sidebar.classList.toggle('open');
+            document.body.classList.toggle('admin-menu-open', isOpen);
+            mobileToggle.setAttribute('aria-expanded', String(isOpen));
+            mobileToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        });
+    }
+    sidebarBackdrop?.addEventListener('click', closeSidebar);
+    adminMain?.addEventListener('click', event => {
+        if (window.innerWidth <= 980 && sidebar.classList.contains('open') && !event.target.closest('[data-admin-toggle]')) closeSidebar();
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 980) closeSidebar();
     });
 
     document.querySelectorAll('[data-admin-user-name]').forEach(node => { node.textContent = userName; });
