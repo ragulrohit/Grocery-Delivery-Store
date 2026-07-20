@@ -38,6 +38,7 @@ function handleSignup(e) {
     const email = document.getElementById('signup-email').value.trim();
     const password = document.getElementById('signup-password').value;
     const phone = document.getElementById('signup-phone').value.trim();
+    const remember = document.getElementById('signup-remember')?.checked;
 
     if (!name || !email || !password) {
         showToast('Please fill all required fields', 'error');
@@ -53,6 +54,8 @@ function handleSignup(e) {
     const user = { name, email, password, phone, joined: new Date().toISOString() };
     users.push(user);
     saveUsers(users);
+    if (remember) localStorage.setItem('groceryRememberEmail', email);
+    else localStorage.removeItem('groceryRememberEmail');
     setCurrentUser({ name, email, phone });
     showToast('Account created successfully! Redirecting...');
     setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
@@ -63,21 +66,45 @@ function handleLogin(e) {
     e.preventDefault();
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
+    const remember = document.getElementById('login-remember')?.checked;
 
     if (!email || !password) {
         showToast('Please fill all fields', 'error');
         return;
     }
 
-    const users = getUsers();
-    const user = users.find(u => u.email === email && u.password === password);
+    const savedUser = getUsers().find(u => u.email === email);
+    const fallbackName = email.includes('@') ? email.split('@')[0] : email;
+    setCurrentUser({
+        name: savedUser?.name || fallbackName || 'Grocery Shopper',
+        email,
+        phone: savedUser?.phone || ''
+    });
+    if (remember) localStorage.setItem('groceryRememberEmail', email);
+    else localStorage.removeItem('groceryRememberEmail');
+    showToast('Login successful! Redirecting...');
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
+}
 
-    if (user) {
-        setCurrentUser({ name: user.name, email: user.email, phone: user.phone });
-        showToast('Login successful! Redirecting...');
-        setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
-    } else {
-        showToast('Invalid email or password', 'error');
+function togglePasswordVisibility(inputId, button) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+
+    const isHidden = input.type === 'password';
+    input.type = isHidden ? 'text' : 'password';
+    button.classList.toggle('is-visible', isHidden);
+    button.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+    button.setAttribute('aria-pressed', String(isHidden));
+    input.focus();
+}
+
+function initRememberMe() {
+    const emailInput = document.getElementById('login-email');
+    const rememberInput = document.getElementById('login-remember');
+    const rememberedEmail = localStorage.getItem('groceryRememberEmail');
+    if (emailInput && rememberInput && rememberedEmail) {
+        emailInput.value = rememberedEmail;
+        rememberInput.checked = true;
     }
 }
 
@@ -104,6 +131,21 @@ function showToast(message, type = 'success') {
 function initNavbar() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const navAuth = document.querySelector('.nav-auth');
+
+    if (navLinks && navAuth && !navLinks.querySelector('.mobile-auth-links')) {
+        const mobileAuth = document.createElement('li');
+        mobileAuth.className = 'mobile-auth-links';
+
+        if (navAuth.querySelector('[onclick*="logout"]')) {
+            mobileAuth.innerHTML = '<button type="button" class="btn btn-danger" onclick="logout()">Logout</button>';
+        } else {
+            navAuth.querySelectorAll('a').forEach(link => mobileAuth.appendChild(link.cloneNode(true)));
+        }
+
+        navLinks.appendChild(mobileAuth);
+    }
+
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -498,10 +540,10 @@ function renderSiteFooter() {
                     <a href="index.html" aria-label="Stackly home"><img class="footer-logo" src="images/stackly-logo.webp" alt="Stackly"></a>
                     <p>Fresh groceries, thoughtful packing and dependable delivery—all brought together for an easier everyday shop.</p>
                     <div class="social-links" aria-label="Stackly social links">
-                        <a class="social-facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="images/social-facebook.svg" alt=""></a>
-                        <a class="social-x" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="images/social-x.svg" alt=""></a>
-                        <a class="social-linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="images/social-linkedin.svg" alt=""></a>
-                        <a class="social-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="images/social-instagram.svg" alt=""></a>
+                        <a class="social-facebook" href="404.html" aria-label="Facebook"><img src="images/social-facebook.webp" alt=""></a>
+                        <a class="social-x" href="404.html" aria-label="X"><img src="images/social-x.webp" alt=""></a>
+                        <a class="social-linkedin" href="404.html" aria-label="LinkedIn"><img src="images/social-linkedin.webp" alt=""></a>
+                        <a class="social-instagram" href="404.html" aria-label="Instagram"><img src="images/social-instagram.webp" alt=""></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -511,7 +553,7 @@ function renderSiteFooter() {
                         <li><a href="orders.html">Orders</a></li>
                         <li><a href="offers.html">Offers</a></li>
                         <li><a href="delivery.html">Delivery Info</a></li>
-                        <li><a href="contact.html">Add Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -547,6 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hideLoader();
     initDarkMode();
     updateCartCount();
+    initRememberMe();
 
     setTimeout(() => {
         initScrollAnimations();

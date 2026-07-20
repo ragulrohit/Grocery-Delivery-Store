@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offers & Deals - Grocery Delivery Store</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260720-2">
 </head>
 <body>
     <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading offers...</p></div>
@@ -18,7 +18,7 @@
                 <li><a href="orders.html">Orders</a></li>
                 <li><a href="offers.html" class="active">Offers</a></li>
                 <li><a href="delivery.html">Delivery</a></li>
-                <li><a href="contact.html">Add Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="nav-auth">
                 <a href="login.html" class="btn btn-outline">Login</a>
@@ -35,28 +35,25 @@
                 <h1>&#127873; Offers & Deals</h1>
                 <p>Discover rotating weekly offers, bundle savings and member-only prices across the groceries your household loves most.</p>
                 <div class="page-hero-points"><span>Weekly deals</span><span>Member rewards</span><span>Bundle savings</span></div>
-                <img src="images/hero-offers-v2.png" alt="A vibrant grocery basket prepared for seasonal offers">
+                <img src="images/hero-offers-v2.webp" alt="A vibrant grocery basket prepared for seasonal offers">
             </div>
 
             <div class="offers-grid animate-fadeInUp delay-1">
-                <div class="offer-card" onclick="showToast('Offer applied! 50% discount activated')">
-                    <img src="images/offer-1.webp" alt="50% Off">
+                <div class="offer-card offer-card-fruit" onclick="showToast('Offer applied! 50% discount activated')">
                     <div class="offer-overlay">
                         <h3>50% OFF</h3>
                         <p>On all fresh fruits this weekend. Use code: FRESH50</p>
                         <button class="btn btn-primary" style="margin-top:0.5rem;">Grab Deal &#128293;</button>
                     </div>
                 </div>
-                <div class="offer-card" onclick="showToast('Free delivery activated!')">
-                    <img src="images/offer-2.webp" alt="Free Delivery">
+                <div class="offer-card offer-card-delivery" onclick="showToast('Free delivery activated!')">
                     <div class="offer-overlay">
                         <h3>Free Delivery</h3>
                         <p>On orders above $50. No minimum for premium members!</p>
                         <button class="btn btn-secondary" style="margin-top:0.5rem;">Order Now &#128666;</button>
                     </div>
                 </div>
-                <div class="offer-card" onclick="showToast('BOGO deal added to your cart!')">
-                    <img src="images/offer-3.webp" alt="Buy 1 Get 1">
+                <div class="offer-card offer-card-bakery" onclick="showToast('BOGO deal added to your cart!')">
                     <div class="offer-overlay">
                         <h3>Buy 1 Get 1 Free</h3>
                         <p>On all bakery items. Limited time offer!</p>
@@ -65,7 +62,7 @@
                 </div>
             </div>
 
-            <div style="margin-top:3rem;">
+            <div style="margin-top:2rem;">
                 <div class="section-header animate-fadeInUp delay-2">
                     <h2>Daily Specials</h2>
                     <p>Today's exclusive deals you don't want to miss</p>
@@ -73,48 +70,48 @@
                 <div class="products-grid animate-fadeInUp delay-3">
                     <div class="product-card">
                         <span class="product-badge" style="background:var(--accent1);">50% OFF</span>
-                        <img src="images/fruits.webp" alt="Fruits" class="product-image">
+                        <img src="images/product-fruit-basket.webp" alt="Organic fruit basket" class="product-image">
                         <div class="product-info">
                             <h3>Organic Fruit Basket</h3>
                             <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (128)</div>
                             <div class="price">$14.99 <old>$29.99</old></div>
-                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Organic Fruit Basket (50% Off)',14.99,'images/fruits.webp')">Add to Cart &#128722;</button>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Organic Fruit Basket (50% Off)',14.99,'images/product-fruit-basket.webp')">Add to Cart &#128722;</button>
                         </div>
                     </div>
                     <div class="product-card">
                         <span class="product-badge" style="background:var(--accent4);">30% OFF</span>
-                        <img src="images/dairy.webp" alt="Dairy" class="product-image">
+                        <img src="images/product-dairy-pack.webp" alt="Premium dairy pack" class="product-image">
                         <div class="product-info">
                             <h3>Premium Dairy Pack</h3>
                             <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (256)</div>
                             <div class="price">$11.19 <old>$15.99</old></div>
-                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Premium Dairy Pack (30% Off)',11.19,'images/dairy.webp')">Add to Cart &#128722;</button>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Premium Dairy Pack (30% Off)',11.19,'images/product-dairy-pack.webp')">Add to Cart &#128722;</button>
                         </div>
                     </div>
                     <div class="product-card">
                         <span class="product-badge" style="background:var(--accent2);">BUY 1 GET 1</span>
-                        <img src="images/bakery.webp" alt="Bakery" class="product-image">
+                        <img src="images/product-bakery-combo.webp" alt="Fresh bakery combo" class="product-image">
                         <div class="product-info">
                             <h3>Fresh Bakery Combo</h3>
                             <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734; (167)</div>
                             <div class="price">$12.99 <old>$25.98</old></div>
-                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Fresh Bakery Combo (BOGO)',12.99,'images/bakery.webp')">Add to Cart &#128722;</button>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Fresh Bakery Combo (BOGO)',12.99,'images/product-bakery-combo.webp')">Add to Cart &#128722;</button>
                         </div>
                     </div>
                     <div class="product-card">
                         <span class="product-badge" style="background:var(--accent5);">40% OFF</span>
-                        <img src="images/beverages.webp" alt="Beverages" class="product-image">
+                        <img src="images/product-beverage-mix.webp" alt="Tropical juice pack" class="product-image">
                         <div class="product-info">
                             <h3>Tropical Juice Pack</h3>
                             <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733; (198)</div>
                             <div class="price">$5.99 <old>$9.99</old></div>
-                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Tropical Juice Pack (40% Off)',5.99,'images/beverages.webp')">Add to Cart &#128722;</button>
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart('Tropical Juice Pack (40% Off)',5.99,'images/product-beverage-mix.webp')">Add to Cart &#128722;</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="section-header animate-fadeInUp delay-4" style="margin-top:3rem;">
+            <div class="section-header animate-fadeInUp delay-4" style="margin-top:2rem;">
                 <h2>Coupon Codes</h2>
                 <p>Apply these coupons at checkout for extra savings</p>
             </div>
@@ -143,7 +140,7 @@
 
     <div class="section">
         <div class="editorial-panel animate-on-scroll">
-            <img src="images/product-snack-box.png" alt="A value-packed gourmet snack box" loading="lazy">
+            <img src="images/product-snack-box.webp" alt="A value-packed gourmet snack box" loading="lazy">
             <div class="editorial-copy"><p class="eyebrow">Smart shopping</p><h2>More goodness in every basket.</h2><p>Our deals rotate across fresh food and household favorites, so saving never means settling.</p><ul class="benefit-list"><li>Weekly offers across the categories you use most</li><li>Simple coupon codes with clear conditions</li><li>Member exclusives and seasonal bundles</li></ul><a href="products.html" class="btn btn-primary">Shop all products &#8594;</a></div>
         </div>
     </div>

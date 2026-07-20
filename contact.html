@@ -18,7 +18,7 @@
                 <li><a href="orders.html">Orders</a></li>
                 <li><a href="offers.html">Offers</a></li>
                 <li><a href="delivery.html">Delivery</a></li>
-                <li><a href="contact.html" class="active">Add Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
             <div class="nav-auth">
                 <a href="login.html" class="btn btn-outline">Login</a>
@@ -28,33 +28,33 @@
         </div>
     </nav>
 
-    <div class="page-bg page-bg-contact" style="padding-top:90px;min-height:100vh;">
-        <div class="section">
+    <div class="page-bg page-bg-contact contact-page" style="padding-top:90px;min-height:100vh;">
+        <div class="section contact-main-section">
             <div class="page-header page-hero animate-fadeInDown">
                 <span class="page-kicker">Helpful humans, ready to listen</span>
                 <h1>&#128100; Add Contact</h1>
                 <p>Save trusted delivery contacts and reach our support team whenever you need help with an order, address or account.</p>
                 <div class="page-hero-points"><span>24/7 support</span><span>Fast responses</span><span>Saved addresses</span></div>
-                <img src="images/hero-contact-v2.png" alt="A friendly grocery customer-care specialist helping a shopper">
+                <img src="images/hero-contact-v2.webp" alt="A friendly grocery customer-care specialist helping a shopper">
             </div>
 
-            <div class="stats-grid animate-fadeInUp delay-1">
+            <div class="stats-grid contact-stats animate-fadeInUp delay-1">
                 <div class="stat-card"><div class="stat-icon">&#128222;</div><div class="stat-info"><h3>+1 234 567 890</h3><p>Call Us Anytime</p><div class="stat-change">24/7 Customer Support</div></div></div>
                 <div class="stat-card"><div class="stat-icon">&#128231;</div><div class="stat-info"><h3>info@grocery.com</h3><p>Email Us</p><div class="stat-change">Response within 1 hour</div></div></div>
                 <div class="stat-card"><div class="stat-icon">&#128205;</div><div class="stat-info"><h3>123 Grocery St</h3><p>Visit Our Store</p><div class="stat-change">Open 7AM - 11PM Daily</div></div></div>
                 <div class="stat-card"><div class="stat-icon">&#128172;</div><div class="stat-info"><h3>Live Chat</h3><p>Chat with Us</p><div class="stat-change">Avg. wait: 30 seconds</div></div></div>
             </div>
 
-            <div class="charts-grid animate-fadeInUp delay-2" style="margin-bottom:2rem;">
+            <div class="charts-grid contact-location-grid animate-fadeInUp delay-2">
                 <div class="chart-card" style="padding:0;overflow:hidden;">
-                    <img src="images/delivery-map.webp" alt="Our Location" style="width:100%;height:300px;object-fit:cover;">
+                    <img src="images/hero-contact-v2.webp" alt="Friendly grocery support team at our main store" style="width:100%;height:300px;object-fit:cover;">
                     <div style="padding:1.5rem;">
                         <h3>&#128205; Our Main Store Location</h3>
                         <p style="color:var(--gray);margin-top:0.5rem;">123 Grocery Street, Food City, FC 12345. We are located in the heart of downtown with easy parking access and public transit nearby.</p>
                     </div>
                 </div>
                 <div class="chart-card" style="padding:0;overflow:hidden;">
-                    <img src="images/delivery-truck.webp" alt="Delivery Fleet" style="width:100%;height:300px;object-fit:cover;">
+                    <img src="images/hero-delivery-v2.webp" alt="Grocery delivery fleet serving local neighborhoods" style="width:100%;height:300px;object-fit:cover;">
                     <div style="padding:1.5rem;">
                         <h3>&#128666; Delivery Coverage Area</h3>
                         <p style="color:var(--gray);margin-top:0.5rem;">We deliver across 50+ neighborhoods in the greater metropolitan area. Our fleet of 50+ vehicles ensures fast and reliable delivery to your doorstep.</p>
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="content-grid animate-fadeInUp delay-3">
+            <div class="content-grid contact-form-grid animate-fadeInUp delay-3">
                 <div class="chart-card">
                     <h3>&#128221; Add New Contact</h3>
                     <p style="color:var(--gray);margin-bottom:1.5rem;">Fill in the details below to add a new contact to your delivery address book. This will make checkout faster and easier.</p>
@@ -133,53 +133,70 @@
                     </div>
                 </div>
 
-                <div class="chart-card">
-                    <h3>&#128101; Saved Contacts</h3>
-                    <p style="color:var(--gray);margin-bottom:1.5rem;">Your saved delivery contacts for quick and easy checkout.</p>
-                    <div id="contacts-list">
-                        <div class="contact-item" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:var(--radius-sm);margin-bottom:0.75rem;border-left:4px solid var(--primary);">
-                            <img src="images/avatar-1.webp" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
-                            <div style="flex:1;">
-                                <h4 style="font-size:0.95rem;">Home Address</h4>
-                                <p style="color:var(--gray);font-size:0.8rem;">123 Main St, Apt 4B, Food City, FC 12345</p>
-                                <p style="color:var(--gray);font-size:0.8rem;">+1 (555) 123-4567</p>
+                <div class="contact-side-column">
+                    <div class="chart-card">
+                        <h3>&#128101; Saved Contacts</h3>
+                        <p style="color:var(--gray);margin-bottom:1.5rem;">Your saved delivery contacts for quick and easy checkout.</p>
+                        <div id="contacts-list">
+                            <div class="contact-item" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:var(--radius-sm);margin-bottom:0.75rem;border-left:4px solid var(--primary);">
+                                <img src="images/avatar-1.webp" alt="Home contact" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
+                                <div style="flex:1;">
+                                    <h4 style="font-size:0.95rem;">Home Address</h4>
+                                    <p style="color:var(--gray);font-size:0.8rem;">123 Main St, Apt 4B, Food City, FC 12345</p>
+                                    <p style="color:var(--gray);font-size:0.8rem;">+1 (555) 123-4567</p>
+                                </div>
+                                <button class="btn btn-outline" style="padding:6px 14px;font-size:0.75rem;" onclick="showToast('Contact edited')">Edit</button>
                             </div>
-                            <button class="btn btn-outline" style="padding:6px 14px;font-size:0.75rem;" onclick="showToast('Contact edited')">Edit</button>
+                            <div class="contact-item" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:var(--radius-sm);margin-bottom:0.75rem;border-left:4px solid var(--secondary);">
+                                <img src="images/avatar-2.webp" alt="Office contact" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
+                                <div style="flex:1;">
+                                    <h4 style="font-size:0.95rem;">Office Address</h4>
+                                    <p style="color:var(--gray);font-size:0.8rem;">456 Business Ave, Suite 200, Food City, FC 12346</p>
+                                    <p style="color:var(--gray);font-size:0.8rem;">+1 (555) 987-6543</p>
+                                </div>
+                                <button class="btn btn-outline" style="padding:6px 14px;font-size:0.75rem;" onclick="showToast('Contact edited')">Edit</button>
+                            </div>
                         </div>
-                        <div class="contact-item" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:var(--radius-sm);margin-bottom:0.75rem;border-left:4px solid var(--secondary);">
-                            <img src="images/avatar-2.webp" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
-                            <div style="flex:1;">
-                                <h4 style="font-size:0.95rem;">Office Address</h4>
-                                <p style="color:var(--gray);font-size:0.8rem;">456 Business Ave, Suite 200, Food City, FC 12346</p>
-                                <p style="color:var(--gray);font-size:0.8rem;">+1 (555) 987-6543</p>
-                            </div>
-                            <button class="btn btn-outline" style="padding:6px 14px;font-size:0.75rem;" onclick="showToast('Contact edited')">Edit</button>
+                        <div id="contacts-empty" style="display:none;text-align:center;padding:2rem;color:var(--gray);">
+                            <p style="font-size:2rem;">&#128221;</p>
+                            <p>No additional contacts saved yet.</p>
                         </div>
                     </div>
-                    <div id="contacts-empty" style="display:none;text-align:center;padding:2rem;color:var(--gray);">
-                        <p style="font-size:2rem;">&#128221;</p>
-                        <p>No additional contacts saved yet.</p>
+
+                    <div class="contact-preferences-card">
+                        <img src="images/home-doorstep-delivery.webp" alt="Fresh groceries arranged for a doorstep delivery">
+                        <div class="contact-preferences-content">
+                            <span class="contact-preferences-kicker">Make every arrival easier</span>
+                            <h3>Set your delivery preferences</h3>
+                            <p>Add the small details that help your order reach the right person and place without delays.</p>
+                            <div class="contact-preference-list">
+                                <span>&#10003; Contactless drop-off</span>
+                                <span>&#10003; Doorbell instructions</span>
+                                <span>&#10003; Preferred delivery time</span>
+                            </div>
+                            <a href="delivery.html" class="btn btn-secondary">View Delivery Info &#8594;</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="content-grid animate-fadeInUp delay-4" style="margin-top:2rem;">
+            <div class="content-grid contact-services-grid animate-fadeInUp delay-4">
                 <div class="content-card">
-                    <img src="images/delivery-package.webp" alt="Packaging">
+                    <img src="images/home-doorstep-delivery.webp" alt="Eco-friendly grocery packaging">
                     <div class="content-body">
                         <h3>Eco-Friendly Packaging</h3>
                         <p>All our deliveries come in sustainable, biodegradable packaging. We care about the environment while delivering freshness to your doorstep.</p>
                     </div>
                 </div>
                 <div class="content-card">
-                    <img src="images/hero-main.webp" alt="Fresh Products">
+                    <img src="images/fresh-grocery-lifestyle.webp" alt="Fresh quality-checked grocery products">
                     <div class="content-body">
                         <h3>Guaranteed Freshness</h3>
                         <p>Every product is quality-checked before dispatch. If you are not satisfied with the freshness, we offer a full refund within 24 hours of delivery.</p>
                     </div>
                 </div>
                 <div class="content-card">
-                    <img src="images/dash-analytics.webp" alt="Analytics">
+                    <img src="images/hero-delivery-v2.webp" alt="Smart real-time grocery delivery tracking">
                     <div class="content-body">
                         <h3>Smart Delivery Tracking</h3>
                         <p>Track your order in real-time with our advanced GPS-enabled delivery system. Get live updates and accurate ETA for every order you place.</p>
@@ -187,12 +204,12 @@
                 </div>
             </div>
 
-            <div class="section-header animate-fadeInUp delay-5" style="margin-top:3rem;">
+            <div class="section-header contact-section-header animate-fadeInUp delay-5">
                 <h2>Frequently Asked Questions</h2>
                 <p>Quick answers about our contact and delivery services</p>
             </div>
 
-            <div class="features-grid animate-fadeInUp delay-5">
+            <div class="features-grid contact-feature-grid animate-fadeInUp delay-5">
                 <div class="feature-card">
                     <div class="feature-icon">&#128222;</div>
                     <h3>How do I reach support?</h3>
@@ -215,12 +232,12 @@
                 </div>
             </div>
 
-            <div class="section-header animate-fadeInUp delay-6" style="margin-top:3rem;">
+            <div class="section-header contact-section-header animate-fadeInUp delay-6">
                 <h2>What Our Customers Say</h2>
                 <p>Trusted by thousands of happy shoppers</p>
             </div>
 
-            <div class="features-grid animate-fadeInUp delay-6">
+            <div class="features-grid contact-feature-grid animate-fadeInUp delay-6">
                 <div class="testimonial-card">
                     <img src="images/avatar-4.webp" alt="James">
                     <p>"The contact form was so easy to use! I added my office address in seconds and now checkout is a breeze. Amazing service!"</p>
@@ -243,9 +260,9 @@
         </div>
     </div>
 
-    <div class="section">
+    <div class="section contact-editorial-section">
         <div class="editorial-panel animate-on-scroll">
-            <img src="images/fresh-grocery-lifestyle.png" alt="Groceries ready for a smooth home delivery" loading="lazy">
+            <img src="images/fresh-grocery-lifestyle.webp" alt="Groceries ready for a smooth home delivery" loading="lazy">
             <div class="editorial-copy"><p class="eyebrow">Delivery made personal</p><h2>Save the details that make every handoff easy.</h2><p>Add household contacts, accurate addresses and helpful instructions for a smoother arrival.</p><ul class="benefit-list"><li>Separate home, work and family addresses</li><li>Add gate codes and drop-off preferences</li><li>Update contact details whenever plans change</li></ul><a href="delivery.html" class="btn btn-secondary">Learn about delivery &#8594;</a></div>
         </div>
     </div>

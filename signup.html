@@ -6,16 +6,19 @@
     <title>Sign Up - Grocery Delivery Store</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="signup-page-body">
     <div id="preloader" class="loading-overlay">
         <div class="spinner"></div>
         <p>Creating your account...</p>
     </div>
 
     <div class="auth-page" style="background:linear-gradient(135deg,#06d6a0 0%,#118ab2 50%,#7b2ff7 100%);background-size:300% 300%;animation:colorShift 10s ease infinite;">
+        <a href="index.html" class="auth-back-link" aria-label="Back to home">&#8592; Back to Home</a>
         <div class="auth-shell animate-scaleIn">
             <div class="auth-visual">
-                <img src="images/product-frozen-selection.png" alt="A colorful selection of convenient grocery favorites">
+                <img src="images/product-frozen-selection.webp" alt="A colorful selection of convenient grocery favorites">
+                <div class="auth-visual-badge auth-badge-one" aria-hidden="true"><strong>Member savings</strong><span>Offers made for you</span></div>
+                <div class="auth-visual-badge auth-badge-two" aria-hidden="true"><strong>Easy reorders</strong><span>Your favorites remembered</span></div>
                 <div class="auth-visual-copy"><h1>Better groceries are just a few clicks away.</h1><p>Create an account to save favorites, schedule deliveries and unlock member-only offers.</p></div>
             </div>
         <div class="auth-container">
@@ -39,25 +42,39 @@
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="signup-password" placeholder="Create a password" required minlength="6">
+                    <div class="password-field">
+                        <input type="password" id="signup-password" autocomplete="new-password" placeholder="Create a password" required minlength="6">
+                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signup-password', this)" aria-label="Show password" aria-pressed="false">
+                            <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.5-6 9.8-6 9.8 6 9.8 6-3.5 6-9.8 6-9.8-6-9.8-6Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 3 18 18M10.6 6.2A9.9 9.9 0 0 1 12 6c6.3 0 9.8 6 9.8 6a16 16 0 0 1-2.2 2.8M6.5 6.5C3.7 8.3 2.2 12 2.2 12s3.5 6 9.8 6a10 10 0 0 0 4.1-.9M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+                        </button>
+                    </div>
                 </div>
+                <label class="remember-control" for="signup-remember">
+                    <input type="checkbox" id="signup-remember">
+                    <span class="remember-check" aria-hidden="true">&#10003;</span>
+                    <span>Remember me</span>
+                </label>
                 <button type="submit" class="btn btn-secondary">Create Account &#10140;</button>
                 <div class="divider"><span>or</span></div>
                 <div class="social-login">
-                    <button type="button" class="btn btn-outline" style="flex:1;justify-content:center;" onclick="showToast('Google signup coming soon!')">&#9679; Google</button>
-                    <button type="button" class="btn btn-outline" style="flex:1;justify-content:center;" onclick="showToast('Facebook signup coming soon!')">&#9679; Facebook</button>
+                    <button type="button" class="btn btn-outline social-btn" onclick="showToast('Google signup coming soon!')">
+                        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.5-.2-2.2H12v4.3h5.4a4.6 4.6 0 0 1-2 3v2.8h3.3c1.9-1.8 2.9-4.4 2.9-7.9Z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.7-2.4l-3.3-2.8c-.9.6-2.1 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3v2.9A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 13.7a6 6 0 0 1 0-3.8V7H3a10 10 0 0 0 0 9.6l3.4-2.9Z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9A9.7 9.7 0 0 0 12 2a10 10 0 0 0-9 5l3.4 2.9c.8-2.3 3-4 5.6-4Z"/></svg>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="btn btn-outline social-btn" onclick="showToast('Facebook signup coming soon!')">
+                        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path fill="#fff" d="M13.5 20v-7h2.4l.4-2.8h-2.8V8.4c0-.8.2-1.4 1.4-1.4h1.5V4.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8V13h2.5v7h3Z"/></svg>
+                        <span>Facebook</span>
+                    </button>
                 </div>
                 <div class="form-footer">
                     <p>Already have an account? <a href="login.html">Login</a></p>
-                    <p style="margin-top:0.5rem;"><a href="index.html" style="color:var(--gray);font-weight:400;font-size:0.85rem;">&#8592; Back to Home</a></p>
                 </div>
                 <div class="auth-trust"><span>&#10003; Member prices</span><span>&#10003; Saved addresses</span><span>&#10003; Faster reorders</span></div>
             </form>
         </div>
         </div>
     </div>
-
-    <footer class="footer auth-footer" data-site-footer></footer>
 
     <script src="script.js"></script>
 </body>

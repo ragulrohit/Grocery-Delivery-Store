@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Stackly Grocery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="not-found-body">
+    <main class="not-found-page">
+        <span class="not-found-orb orb-one" aria-hidden="true"></span>
+        <span class="not-found-orb orb-two" aria-hidden="true"></span>
+
+        <section class="not-found-card" aria-labelledby="not-found-title">
+            <a href="index.html" class="not-found-logo" aria-label="Stackly Grocery home">
+                <img src="images/stackly-logo.webp" alt="Stackly">
+            </a>
+
+            <div class="not-found-copy">
+                <p class="not-found-kicker">Grocery aisle missing</p>
+                <strong class="not-found-code">404</strong>
+                <h1 id="not-found-title">This page fell out of the grocery bag.</h1>
+                <p>The link may be old, moved, or typed incorrectly. Let&rsquo;s get you back to fresh groceries and dependable delivery.</p>
+                <div class="not-found-actions">
+                    <a href="index.html" class="btn btn-primary">Back to Home</a>
+                    <button type="button" class="btn not-found-back" onclick="goBackFrom404()">&#8592; Go Back</button>
+                </div>
+                <nav class="not-found-links" aria-label="Helpful links">
+                    <a href="products.html">Shop products</a>
+                    <a href="offers.html">View offers</a>
+                    <a href="delivery.html">Track delivery</a>
+                </nav>
+            </div>
+
+            <div class="not-found-visual">
+                <div class="not-found-image-wrap">
+                    <img src="images/fresh-grocery-lifestyle.webp" alt="A colorful assortment of fresh groceries ready for delivery">
+                </div>
+                <div class="not-found-note note-top"><span>&#128205;</span><div><strong>Route status</strong><small>Page not found</small></div></div>
+                <div class="not-found-note note-bottom"><span>&#129365;</span><div><strong>Fresh route ready</strong><small>Home is one click away</small></div></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function goBackFrom404() {
+            if (window.history.length > 1) window.history.back();
+            else window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
