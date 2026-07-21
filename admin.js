@@ -127,8 +127,75 @@ function confirmAdminLogout() {
     if (typeof logout === 'function') logout();
 }
 
+function initAdminResponsiveSelects() {
+    document.querySelectorAll('[data-admin-select]').forEach(wrapper => {
+        const valueInput = wrapper.querySelector('input[type="hidden"]');
+        const toggle = wrapper.querySelector('.admin-select-toggle');
+        const toggleValue = toggle?.querySelector('span');
+        const menu = wrapper.querySelector('.admin-select-menu');
+        const options = Array.from(menu?.querySelectorAll('.admin-select-option') || []);
+        if (!valueInput || !toggle || !toggleValue || !menu || !options.length) return;
+
+        const closeMenu = () => {
+            wrapper.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        };
+
+        const syncSelection = () => {
+            const selected = options.find(option => option.dataset.value === valueInput.value);
+            toggleValue.textContent = selected?.textContent || valueInput.value;
+            options.forEach(option => {
+                option.setAttribute('aria-selected', String(option.dataset.value === valueInput.value));
+            });
+        };
+
+        toggle.addEventListener('click', () => {
+            const willOpen = !wrapper.classList.contains('is-open');
+            document.querySelectorAll('[data-admin-select].is-open').forEach(openSelect => {
+                openSelect.classList.remove('is-open');
+                openSelect.querySelector('.admin-select-toggle')?.setAttribute('aria-expanded', 'false');
+            });
+            wrapper.classList.toggle('is-open', willOpen);
+            toggle.setAttribute('aria-expanded', String(willOpen));
+            if (willOpen) menu.querySelector('[aria-selected="true"]')?.focus();
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                valueInput.value = option.dataset.value;
+                valueInput.dispatchEvent(new Event('change', { bubbles: true }));
+                syncSelection();
+                closeMenu();
+                toggle.focus();
+            });
+        });
+
+        wrapper.addEventListener('keydown', event => {
+            const focusedIndex = options.indexOf(document.activeElement);
+            if (event.key === 'Escape') {
+                closeMenu();
+                toggle.focus();
+            } else if (event.key === 'ArrowDown' && wrapper.classList.contains('is-open')) {
+                event.preventDefault();
+                options[Math.min(focusedIndex + 1, options.length - 1)]?.focus();
+            } else if (event.key === 'ArrowUp' && wrapper.classList.contains('is-open')) {
+                event.preventDefault();
+                options[Math.max(focusedIndex - 1, 0)]?.focus();
+            }
+        });
+
+        document.addEventListener('click', event => {
+            if (!wrapper.contains(event.target)) closeMenu();
+        });
+        syncSelection();
+    });
+}
+
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeAdminLogout();
 });
 
-document.addEventListener('DOMContentLoaded', initAdminPortal);
+document.addEventListener('DOMContentLoaded', () => {
+    initAdminResponsiveSelects();
+    initAdminPortal();
+});

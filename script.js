@@ -65,7 +65,7 @@ function handleSignup(e) {
     else localStorage.removeItem('groceryRememberEmail');
     localStorage.removeItem('groceryCurrentUser');
     showToast('Account created successfully! Please login.');
-    setTimeout(() => { window.location.href = 'login.html'; }, 1200);
+    setTimeout(() => { window.location.replace('login.html'); }, 1200);
 }
 
 // ===== LOGIN =====
@@ -147,7 +147,13 @@ function initNavbar() {
         if (navAuth.querySelector('[onclick*="logout"]')) {
             mobileAuth.innerHTML = '<button type="button" class="btn btn-danger" onclick="logout()">Logout</button>';
         } else {
-            navAuth.querySelectorAll('a').forEach(link => mobileAuth.appendChild(link.cloneNode(true)));
+            navAuth.querySelectorAll('a').forEach(link => {
+                const mobileLink = link.cloneNode(true);
+                const label = link.textContent.trim();
+                mobileLink.classList.add(link.getAttribute('href') === 'signup.html' ? 'mobile-signup-btn' : 'mobile-login-btn');
+                mobileLink.innerHTML = `<span>${label}</span>`;
+                mobileAuth.appendChild(mobileLink);
+            });
         }
 
         navLinks.appendChild(mobileAuth);

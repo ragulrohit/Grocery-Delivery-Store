@@ -1417,27 +1417,15 @@ body {
     width: 100%;
 }
 
-/* Keep contact select menus inside narrow mobile viewports. Native desktop-style
-   select popups can render wider than the emulated screen, so mobile uses this
-   progressively enhanced menu while the original select remains the value source. */
+/* Custom contact menus stay inside their form card on every viewport. */
 .contact-select {
     position: relative;
     width: 100%;
     min-width: 0;
 }
 
-.contact-select-toggle,
-.contact-select-menu {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .contact-select .contact-native-select {
-        display: none;
-    }
-
-    .contact-select-toggle {
-        display: flex;
+.contact-select-toggle {
+        display: flex !important;
         align-items: center;
         justify-content: space-between;
         width: 100%;
@@ -1472,7 +1460,8 @@ body {
         transform: translateY(2px) rotate(225deg);
     }
 
-    .contact-select-menu {
+.contact-select-menu {
+        display: none;
         position: absolute;
         top: calc(100% + 6px);
         left: 0;
@@ -1490,7 +1479,7 @@ body {
         list-style: none;
     }
 
-    .contact-select.is-open .contact-select-menu {
+.contact-select.is-open .contact-select-menu {
         display: block;
     }
 
@@ -1509,14 +1498,12 @@ body {
         cursor: pointer;
     }
 
-    .contact-select-option:hover,
-    .contact-select-option:focus-visible,
-    .contact-select-option[aria-selected="true"] {
+.contact-select-option:hover,
+.contact-select-option:focus-visible,
+.contact-select-option[aria-selected="true"] {
         outline: none;
         background: rgba(46,196,182,0.2);
     }
-}
-
 .contact-side-column {
     display: grid;
     gap: 1.5rem;
@@ -2006,11 +1993,27 @@ table tr:hover {
     }
 
     .mobile-auth-links .btn {
-        flex: 1;
+        flex: 1 1 0;
+        display: flex;
+        align-items: center;
         justify-content: center;
+        min-width: 0;
         min-height: 44px;
         padding: 10px 16px;
         border-radius: 24px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+        overflow: visible;
+    }
+
+    .mobile-auth-links .btn span {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        line-height: inherit;
+        white-space: nowrap;
     }
 
     .mobile-auth-links .btn-outline {
@@ -2927,6 +2930,112 @@ table tr:hover {
 .admin-body[data-admin-page="settings"] .admin-content-grid:last-of-type .admin-form-card { border-left-color:#12a87b; }
 .admin-body[data-admin-page="settings"] .admin-card { border-radius:22px 8px 22px 8px; }
 
+/* Settings dropdowns use in-page menus so mobile browsers cannot render an
+   oversized native select popup outside the settings card. */
+.admin-responsive-select {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.admin-select-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 11px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius-sm);
+    color: var(--dark);
+    background: var(--white);
+    font: 500 0.95rem/1.4 'Poppins', sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+
+.admin-select-toggle span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-select-toggle::after {
+    content: '';
+    flex: 0 0 8px;
+    width: 8px;
+    height: 8px;
+    margin-left: 1rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.admin-responsive-select.is-open .admin-select-toggle {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(255,107,53,0.1);
+}
+
+.admin-responsive-select.is-open .admin-select-toggle::after {
+    transform: translateY(2px) rotate(225deg);
+}
+
+.admin-select-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 80;
+    display: none;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    max-height: min(260px, 45vh);
+    overflow: auto;
+    padding: 0.35rem;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    list-style: none;
+}
+
+.admin-responsive-select.is-open .admin-select-menu {
+    display: block;
+}
+
+.admin-select-option {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 0.7rem 0.8rem;
+    border: 0;
+    border-radius: 8px;
+    color: var(--dark);
+    background: transparent;
+    font: 400 0.9rem/1.45 'Poppins', sans-serif;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+.admin-select-option:hover,
+.admin-select-option:focus-visible,
+.admin-select-option[aria-selected="true"] {
+    outline: none;
+    background: rgba(46,196,182,0.2);
+}
+
+@media (max-width: 560px) {
+    .admin-select-toggle,
+    .admin-select-option {
+        font-size: 16px;
+    }
+}
+
 @media (max-width:1180px) {
     .admin-body[data-admin-page="products"] .admin-page-hero,
     .admin-body[data-admin-page="settings"] .admin-page-hero { grid-template-columns:1fr; }
@@ -3212,5 +3321,236 @@ canvas {
     .admin-progress-row {
         grid-template-columns: 72px minmax(0, 1fr) 30px;
         gap: 0.5rem;
+    }
+}
+
+/* ===== RESPONSIVE UI CONSISTENCY FIXES ===== */
+.form-group {
+    min-width: 0;
+}
+
+.form-group select,
+.responsive-select,
+.admin-body[data-admin-page="settings"] select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 48px;
+    padding: 11px 2.75rem 11px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius-sm);
+    color: var(--dark);
+    background-color: var(--white);
+    font: 500 0.95rem/1.4 'Poppins', sans-serif;
+    text-overflow: ellipsis;
+}
+
+.auth-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 210px;
+}
+
+.auth-container .auth-header .auth-logo img {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.auth-form > .btn[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding-inline: 1rem;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.forgot-password-link {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.auth-form .form-footer p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.35rem;
+    line-height: 1.5;
+}
+
+.auth-form .form-footer a {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.footer,
+.footer button,
+.footer input,
+.footer textarea,
+.footer select {
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-section {
+    text-align: left;
+}
+
+.footer-section h3 {
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.footer-section p,
+.footer-section ul li,
+.footer-section ul li a,
+.footer-bottom p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.7rem;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+@media (max-width: 850px) {
+    .login-page-body,
+    .signup-page-body {
+        min-height: 100dvh;
+        overflow-y: auto;
+    }
+
+    .login-page-body .auth-page,
+    .signup-page-body .auth-page {
+        min-height: 100dvh;
+        height: auto;
+        justify-content: flex-start;
+        padding: 5rem 1rem 1rem;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .auth-shell {
+        overflow: hidden;
+    }
+
+    .auth-visual {
+        min-height: 270px;
+    }
+
+    .auth-visual-copy {
+        padding: 1.5rem;
+    }
+
+    .auth-visual-copy h1 {
+        font-size: clamp(1.45rem, 6vw, 1.8rem);
+    }
+}
+
+@media (max-width: 560px) {
+    .mobile-auth-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .settings-row,
+    .admin-body[data-admin-page="settings"] .admin-content-grid {
+        min-width: 0;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .form-group select,
+    .responsive-select,
+    .admin-body[data-admin-page="settings"] select {
+        font-size: 16px;
+    }
+
+    .auth-back-link {
+        top: 0.85rem;
+        left: 1rem;
+    }
+
+    .auth-visual {
+        min-height: 250px;
+    }
+
+    .auth-visual-badge {
+        display: none;
+    }
+
+    .auth-visual-copy {
+        padding: 1.25rem;
+    }
+
+    .auth-visual-copy p {
+        font-size: 0.88rem;
+        line-height: 1.55;
+    }
+
+    .auth-container {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .auth-options {
+        align-items: center;
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+
+    .auth-options .remember-control,
+    .forgot-password-link {
+        font-size: 0.75rem;
+    }
+
+    .mobile-auth-links .btn {
+        min-width: 0;
+        padding-inline: 0.75rem;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 3rem 1.25rem 1.5rem;
+    }
+
+    .footer-content {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-auth-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mobile-auth-links .btn,
+    .mobile-auth-links .mobile-signup-btn {
+        flex: 0 0 auto;
+        width: 100%;
+        min-height: 46px;
+    }
+}
+
+@media (max-width: 360px) {
+    .mobile-auth-links {
+        flex-direction: column;
+    }
+
+    .auth-options .remember-control,
+    .forgot-password-link {
+        font-size: 0.7rem;
     }
 }

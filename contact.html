@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Add Contact - Grocery Delivery Store</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260721-responsive-3">
 </head>
 <body>
     <div id="preloader" class="loading-overlay"><div class="spinner"></div><p>Loading contact page...</p></div>
@@ -104,24 +107,32 @@
                             <input type="text" id="contact-zip" placeholder="12345">
                         </div>
                         <div class="form-group">
-                            <label>Country</label>
-                            <select id="contact-country" style="width:100%;padding:12px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;">
-                                <option>United States</option>
-                                <option>Canada</option>
-                                <option>United Kingdom</option>
-                                <option>Australia</option>
-                                <option>India</option>
-                                <option>Other</option>
-                            </select>
+                            <label id="contact-country-label" for="contact-country-toggle">Country</label>
+                            <div class="contact-select">
+                                <input type="hidden" id="contact-country" value="United States">
+                                <button type="button" id="contact-country-toggle" class="contact-select-toggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="contact-country-menu" aria-labelledby="contact-country-label contact-country-value"><span id="contact-country-value">United States</span></button>
+                                <ul class="contact-select-menu" id="contact-country-menu" role="listbox" aria-labelledby="contact-country-label">
+                                    <li role="none"><button type="button" class="contact-select-option" role="option" data-value="United States">United States</button></li>
+                                    <li role="none"><button type="button" class="contact-select-option" role="option" data-value="Canada">Canada</button></li>
+                                    <li role="none"><button type="button" class="contact-select-option" role="option" data-value="United Kingdom">United Kingdom</button></li>
+                                    <li role="none"><button type="button" class="contact-select-option" role="option" data-value="Australia">Australia</button></li>
+                                    <li role="none"><button type="button" class="contact-select-option" role="option" data-value="India">India</button></li>
+                                    <li role="none"><button type="button" class="contact-select-option" role="option" data-value="Other">Other</button></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Contact Type</label>
-                        <select id="contact-type" style="width:100%;padding:12px 16px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;">
-                            <option>Home</option>
-                            <option>Work / Office</option>
-                            <option>Other</option>
-                        </select>
+                        <label id="contact-type-label" for="contact-type-toggle">Contact Type</label>
+                        <div class="contact-select">
+                            <input type="hidden" id="contact-type" value="Home">
+                            <button type="button" id="contact-type-toggle" class="contact-select-toggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="contact-type-menu" aria-labelledby="contact-type-label contact-type-value"><span id="contact-type-value">Home</span></button>
+                            <ul class="contact-select-menu" id="contact-type-menu" role="listbox" aria-labelledby="contact-type-label">
+                                <li role="none"><button type="button" class="contact-select-option" role="option" data-value="Home">Home</button></li>
+                                <li role="none"><button type="button" class="contact-select-option" role="option" data-value="Work / Office">Work / Office</button></li>
+                                <li role="none"><button type="button" class="contact-select-option" role="option" data-value="Other">Other</button></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Delivery Instructions</label>
@@ -269,7 +280,7 @@
 
     <footer class="footer" data-site-footer></footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260721-responsive-3"></script>
     <script>
         function getContacts() {
             return JSON.parse(localStorage.getItem('groceryContacts') || '[]');
@@ -280,26 +291,12 @@
         }
 
         function initMobileContactSelects() {
-            document.querySelectorAll('#contact-country, #contact-type').forEach((select) => {
-                const wrapper = document.createElement('div');
-                const toggle = document.createElement('button');
-                const menu = document.createElement('ul');
-                const menuId = select.id + '-menu';
-
-                wrapper.className = 'contact-select';
-                toggle.type = 'button';
-                toggle.className = 'contact-select-toggle';
-                toggle.setAttribute('aria-haspopup', 'listbox');
-                toggle.setAttribute('aria-expanded', 'false');
-                toggle.setAttribute('aria-controls', menuId);
-                menu.className = 'contact-select-menu';
-                menu.id = menuId;
-                menu.setAttribute('role', 'listbox');
-                menu.setAttribute('aria-label', select.previousElementSibling?.textContent || 'Select an option');
-
-                select.parentNode.insertBefore(wrapper, select);
-                wrapper.append(select, toggle, menu);
-                select.classList.add('contact-native-select');
+            document.querySelectorAll('.contact-select').forEach((wrapper) => {
+                const valueInput = wrapper.querySelector('input[type="hidden"]');
+                const toggle = wrapper.querySelector('.contact-select-toggle');
+                const toggleValue = toggle.querySelector('span');
+                const menu = wrapper.querySelector('.contact-select-menu');
+                const optionButtons = Array.from(menu.querySelectorAll('.contact-select-option'));
 
                 const closeMenu = () => {
                     wrapper.classList.remove('is-open');
@@ -307,29 +304,21 @@
                 };
 
                 const syncSelection = () => {
-                    toggle.textContent = select.options[select.selectedIndex]?.text || '';
-                    menu.querySelectorAll('.contact-select-option').forEach((optionButton, index) => {
-                        optionButton.setAttribute('aria-selected', String(index === select.selectedIndex));
+                    const selectedOption = optionButtons.find((optionButton) => optionButton.dataset.value === valueInput.value);
+                    toggleValue.textContent = selectedOption?.textContent || valueInput.value;
+                    optionButtons.forEach((optionButton) => {
+                        optionButton.setAttribute('aria-selected', String(optionButton.dataset.value === valueInput.value));
                     });
                 };
 
-                Array.from(select.options).forEach((option, index) => {
-                    const item = document.createElement('li');
-                    const optionButton = document.createElement('button');
-                    item.setAttribute('role', 'none');
-                    optionButton.type = 'button';
-                    optionButton.className = 'contact-select-option';
-                    optionButton.setAttribute('role', 'option');
-                    optionButton.textContent = option.text;
+                optionButtons.forEach((optionButton) => {
                     optionButton.addEventListener('click', () => {
-                        select.selectedIndex = index;
-                        select.dispatchEvent(new Event('change', { bubbles: true }));
+                        valueInput.value = optionButton.dataset.value;
+                        valueInput.dispatchEvent(new Event('change', { bubbles: true }));
                         syncSelection();
                         closeMenu();
                         toggle.focus();
                     });
-                    item.appendChild(optionButton);
-                    menu.appendChild(item);
                 });
 
                 toggle.addEventListener('click', () => {
@@ -361,7 +350,7 @@
                 document.addEventListener('click', (event) => {
                     if (!wrapper.contains(event.target)) closeMenu();
                 });
-                select.addEventListener('change', syncSelection);
+                valueInput.addEventListener('change', syncSelection);
                 syncSelection();
             });
         }
@@ -422,10 +411,8 @@
             document.getElementById('contact-instructions').value = '';
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            initMobileContactSelects();
-            renderContacts();
-        });
+        initMobileContactSelects();
+        renderContacts();
     </script>
 </body>
 </html>
