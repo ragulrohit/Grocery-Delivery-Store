@@ -1114,6 +1114,7 @@ body {
     padding: 14px;
     font-size: 1rem;
     margin-top: 0.5rem;
+    justify-content: center;
 }
 
 .auth-form .form-footer {
@@ -1414,6 +1415,106 @@ body {
 
 .contact-form-grid > .chart-card {
     width: 100%;
+}
+
+/* Keep contact select menus inside narrow mobile viewports. Native desktop-style
+   select popups can render wider than the emulated screen, so mobile uses this
+   progressively enhanced menu while the original select remains the value source. */
+.contact-select {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.contact-select-toggle,
+.contact-select-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .contact-select .contact-native-select {
+        display: none;
+    }
+
+    .contact-select-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 50px;
+        padding: 12px 16px;
+        border: 2px solid var(--gray-light);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+        color: var(--dark);
+        font: 400 16px 'Poppins', sans-serif;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .contact-select-toggle::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        margin-left: 1rem;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: translateY(-2px) rotate(45deg);
+        transition: transform 0.2s ease;
+    }
+
+    .contact-select.is-open .contact-select-toggle {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(255,107,53,0.1);
+    }
+
+    .contact-select.is-open .contact-select-toggle::after {
+        transform: translateY(2px) rotate(225deg);
+    }
+
+    .contact-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        z-index: 30;
+        width: 100%;
+        max-width: calc(100vw - 2rem);
+        max-height: min(280px, 45vh);
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0.35rem;
+        border: 1px solid var(--gray-light);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+        box-shadow: var(--shadow-lg);
+        list-style: none;
+    }
+
+    .contact-select.is-open .contact-select-menu {
+        display: block;
+    }
+
+    .contact-select-option {
+        display: block;
+        width: 100%;
+        padding: 0.7rem 0.8rem;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--dark);
+        font: 400 16px 'Poppins', sans-serif;
+        text-align: left;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        cursor: pointer;
+    }
+
+    .contact-select-option:hover,
+    .contact-select-option:focus-visible,
+    .contact-select-option[aria-selected="true"] {
+        outline: none;
+        background: rgba(46,196,182,0.2);
+    }
 }
 
 .contact-side-column {

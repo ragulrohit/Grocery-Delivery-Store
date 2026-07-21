@@ -50,6 +50,16 @@
                         </button>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <div class="password-field">
+                        <input type="password" id="signup-confirm-password" autocomplete="new-password" placeholder="Re-enter your password" required minlength="6">
+                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signup-confirm-password', this)" aria-label="Show confirm password" aria-pressed="false">
+                            <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.5-6 9.8-6 9.8 6 9.8 6-3.5 6-9.8 6-9.8-6-9.8-6Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 3 18 18M10.6 6.2A9.9 9.9 0 0 1 12 6c6.3 0 9.8 6 9.8 6a16 16 0 0 1-2.2 2.8M6.5 6.5C3.7 8.3 2.2 12 2.2 12s3.5 6 9.8 6a10 10 0 0 0 4.1-.9M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+                        </button>
+                    </div>
+                </div>
                 <label class="remember-control" for="signup-remember">
                     <input type="checkbox" id="signup-remember">
                     <span class="remember-check" aria-hidden="true">&#10003;</span>

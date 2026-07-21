@@ -37,11 +37,18 @@ function handleSignup(e) {
     const name = document.getElementById('signup-name').value.trim();
     const email = document.getElementById('signup-email').value.trim();
     const password = document.getElementById('signup-password').value;
+    const confirmPassword = document.getElementById('signup-confirm-password').value;
     const phone = document.getElementById('signup-phone').value.trim();
     const remember = document.getElementById('signup-remember')?.checked;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !confirmPassword) {
         showToast('Please fill all required fields', 'error');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        showToast('Passwords do not match', 'error');
+        document.getElementById('signup-confirm-password').focus();
         return;
     }
 
@@ -56,9 +63,9 @@ function handleSignup(e) {
     saveUsers(users);
     if (remember) localStorage.setItem('groceryRememberEmail', email);
     else localStorage.removeItem('groceryRememberEmail');
-    setCurrentUser({ name, email, phone });
-    showToast('Account created successfully! Redirecting...');
-    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
+    localStorage.removeItem('groceryCurrentUser');
+    showToast('Account created successfully! Please login.');
+    setTimeout(() => { window.location.href = 'login.html'; }, 1200);
 }
 
 // ===== LOGIN =====
